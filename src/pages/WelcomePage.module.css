@@ -8,7 +8,7 @@
   overflow-x: hidden;
   background-color: var(--color-bg);
   color: var(--color-text);
-  transition: background-color 0.3s ease, color 0.3s ease;
+  transition: background-color 0.3s cubic-bezier(0.4, 0, 0.2, 1), color 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 /* Hero Section */
@@ -19,7 +19,7 @@
   flex-direction: column;
   align-items: center;
   text-align: center;
-  padding: 5rem 1.5rem 4rem 1.5rem;
+  padding: clamp(3.5rem, 8vw, 6rem) 1.5rem clamp(2.5rem, 6vw, 4.5rem) 1.5rem;
   max-width: 960px;
   margin: 0 auto;
   width: 100%;
@@ -30,34 +30,43 @@
   gap: 0.75rem;
   flex-wrap: wrap;
   justify-content: center;
-  margin-bottom: 2rem;
-  animation: fadeIn 0.5s ease both;
+  margin-bottom: clamp(1.25rem, 3vw, 2rem);
+  animation: fadeIn 0.5s cubic-bezier(0.16, 1, 0.3, 1) both;
 }
 
 .pill {
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
-  padding: 0.45rem 1rem;
+  padding: 0.5rem 1.15rem;
+  min-height: 36px;
   background: var(--color-surface);
-  backdrop-filter: blur(12px);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
   color: var(--color-text);
-  border-radius: 999px;
-  font-size: 0.825rem;
+  border-radius: var(--radius-full);
+  font-size: var(--text-xs);
   font-weight: 600;
+  letter-spacing: 0.02em;
   border: 1px solid var(--color-border-strong);
   box-shadow: var(--shadow-xs);
+  transition: transform 0.2s ease, border-color 0.2s ease;
+}
+
+.pill:hover {
+  transform: translateY(-1px);
+  border-color: var(--color-primary);
 }
 
 .headline {
   font-family: var(--font-heading);
-  font-size: clamp(2.5rem, 5.5vw, 4.25rem);
+  font-size: clamp(2.25rem, 6vw, 4.25rem);
   font-weight: 800;
   color: var(--color-text);
-  line-height: 1.1;
+  line-height: 1.12;
   letter-spacing: -0.04em;
   margin-bottom: 1.5rem;
-  animation: fadeIn 0.5s 0.05s ease both;
+  animation: fadeIn 0.5s 0.05s cubic-bezier(0.16, 1, 0.3, 1) both;
 }
 
 .headlineText {
@@ -76,7 +85,7 @@
   vertical-align: baseline;
 }
 
-:root[data-theme="dark"] .headlineAccent {
+:global(:root[data-theme="dark"]) .headlineAccent {
   background: linear-gradient(135deg, #818CF8 0%, #38BDF8 50%, #34D399 100%);
   -webkit-background-clip: text;
   background-clip: text;
@@ -85,12 +94,12 @@
 }
 
 .subtext {
-  font-size: clamp(1.05rem, 2vw, 1.25rem);
+  font-size: clamp(1.05rem, 2.2vw, 1.25rem);
   color: var(--color-muted);
   line-height: 1.7;
   max-width: 680px;
-  margin-bottom: 2.25rem;
-  animation: fadeIn 0.5s 0.1s ease both;
+  margin-bottom: clamp(1.75rem, 4vw, 2.5rem);
+  animation: fadeIn 0.5s 0.1s cubic-bezier(0.16, 1, 0.3, 1) both;
 }
 
 .ctaGroup {
@@ -98,23 +107,29 @@
   gap: 1rem;
   flex-wrap: wrap;
   justify-content: center;
+  align-items: center;
   margin-bottom: 2rem;
-  animation: fadeIn 0.5s 0.15s ease both;
+  animation: fadeIn 0.5s 0.15s cubic-bezier(0.16, 1, 0.3, 1) both;
+  width: 100%;
+  max-width: 520px;
 }
 
 .primaryCta {
   display: inline-flex;
   align-items: center;
-  gap: 0.5rem;
+  justify-content: center;
+  gap: 0.6rem;
   padding: 0.9rem 2.25rem;
+  min-height: 50px;
   font-size: 1.05rem;
   font-weight: 700;
   color: #ffffff !important;
   text-decoration: none !important;
-  border-radius: 14px;
+  border-radius: var(--radius-lg);
   background: linear-gradient(135deg, #4F46E5 0%, #3B82F6 100%);
   box-shadow: 0 6px 24px rgba(79, 70, 229, 0.4);
-  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  transition: transform 0.25s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.25s ease;
+  cursor: pointer;
 }
 
 .primaryCta:hover {
@@ -122,45 +137,60 @@
   box-shadow: 0 10px 32px rgba(79, 70, 229, 0.55);
 }
 
+.primaryCta:active {
+  transform: translateY(0);
+}
+
 .secondaryCta {
   display: inline-flex;
   align-items: center;
-  gap: 0.5rem;
+  justify-content: center;
+  gap: 0.6rem;
   padding: 0.9rem 2rem;
+  min-height: 50px;
   font-size: 1.05rem;
   font-weight: 600;
   color: var(--color-text) !important;
   text-decoration: none !important;
-  border-radius: 14px;
+  border-radius: var(--radius-lg);
   background: var(--btn-secondary-bg);
   border: 1px solid var(--color-border-strong);
   backdrop-filter: blur(12px);
-  transition: background 0.2s ease, transform 0.2s ease;
+  -webkit-backdrop-filter: blur(12px);
+  box-shadow: var(--shadow-xs);
+  transition: background-color 0.2s ease, transform 0.2s ease, border-color 0.2s ease;
+  cursor: pointer;
 }
 
 .secondaryCta:hover {
   background: var(--btn-secondary-hover-bg);
+  border-color: var(--color-primary);
   transform: translateY(-2px);
 }
 
+.secondaryCta:active {
+  transform: translateY(0);
+}
+
 .trustLine {
-  font-size: 0.85rem;
+  font-size: var(--text-sm);
   color: var(--color-muted);
   display: flex;
   align-items: center;
   gap: 0.5rem;
   flex-wrap: wrap;
   justify-content: center;
-  animation: fadeIn 0.5s 0.2s ease both;
+  animation: fadeIn 0.5s 0.2s cubic-bezier(0.16, 1, 0.3, 1) both;
 }
 
 /* Adaptive Modes Showcase Section */
 .modesSection {
-  padding: 4.5rem 1.5rem;
+  padding: clamp(3.5rem, 6vw, 5.5rem) 1.5rem;
   max-width: var(--content-max);
   margin: 0 auto;
   position: relative;
   z-index: 1;
+  width: 100%;
 }
 
 .modesGrid {
@@ -173,21 +203,24 @@
 .modeCard {
   background: var(--color-card-bg);
   border: 1px solid var(--color-card-border);
-  border-radius: 20px;
-  padding: 2rem;
+  border-radius: var(--radius-2xl);
+  padding: clamp(1.5rem, 3vw, 2.25rem);
   backdrop-filter: blur(20px);
-  transition: transform 0.3s ease, border-color 0.3s ease;
+  -webkit-backdrop-filter: blur(20px);
+  box-shadow: var(--shadow-sm);
+  transition: transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1), border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
 .modeCard:hover {
   transform: translateY(-4px);
   border-color: var(--color-primary);
+  box-shadow: var(--shadow-lg);
 }
 
 .modeIcon {
-  width: 48px;
-  height: 48px;
-  border-radius: 12px;
+  width: 52px;
+  height: 52px;
+  border-radius: var(--radius-xl);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -196,12 +229,17 @@
 
 /* Telemetry Section */
 .statsSection {
-  padding: 3.5rem 1.5rem;
-  background: linear-gradient(135deg, rgba(79, 70, 229, 0.05) 0%, rgba(59, 130, 246, 0.05) 100%);
+  padding: clamp(3rem, 5vw, 4.5rem) 1.5rem;
+  background: linear-gradient(135deg, rgba(79, 70, 229, 0.04) 0%, rgba(59, 130, 246, 0.04) 100%);
   border-top: 1px solid var(--color-border);
   border-bottom: 1px solid var(--color-border);
   position: relative;
   z-index: 1;
+}
+
+:global(:root[data-theme="dark"]) .statsSection {
+  background: linear-gradient(135deg, rgba(99, 102, 241, 0.07) 0%, rgba(56, 189, 248, 0.04) 100%);
+  border-color: var(--color-border);
 }
 
 .statsGrid {
@@ -215,29 +253,33 @@
 
 .statValue {
   font-family: var(--font-heading);
-  font-size: 2.75rem;
+  font-size: clamp(2.25rem, 4vw, 3rem);
   font-weight: 800;
   color: var(--color-primary);
   margin-bottom: 0.35rem;
+  letter-spacing: -0.03em;
+  line-height: 1.1;
 }
 
-:root[data-theme="dark"] .statValue {
+:global(:root[data-theme="dark"]) .statValue {
   color: #60A5FA;
 }
 
 .statLabel {
-  font-size: 0.9rem;
+  font-size: var(--text-sm);
   color: var(--color-muted);
-  font-weight: 500;
+  font-weight: 600;
+  letter-spacing: 0.01em;
 }
 
 /* FAQ Section */
 .faqSection {
-  padding: 5rem 1.5rem;
+  padding: clamp(3.5rem, 6vw, 5.5rem) 1.5rem;
   max-width: 800px;
   margin: 0 auto;
   position: relative;
   z-index: 1;
+  width: 100%;
 }
 
 .faqList {
@@ -250,42 +292,61 @@
 .faqItem {
   background: var(--color-card-bg);
   border: 1px solid var(--color-card-border);
-  border-radius: 16px;
+  border-radius: var(--radius-xl);
   overflow: hidden;
-  transition: border-color 0.2s ease;
+  box-shadow: var(--shadow-xs);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.faqItem:hover {
+  border-color: var(--color-primary);
+  box-shadow: var(--shadow-sm);
 }
 
 .faqQuestion {
   width: 100%;
   padding: 1.25rem 1.5rem;
+  min-height: 52px;
   display: flex;
   align-items: center;
   justify-content: space-between;
+  gap: 1rem;
   font-family: var(--font-heading);
-  font-size: 1.05rem;
+  font-size: clamp(1rem, 2vw, 1.1rem);
   font-weight: 700;
   color: var(--color-text);
   background: none;
   border: none;
   cursor: pointer;
   text-align: left;
+  line-height: 1.4;
+  touch-action: manipulation;
+}
+
+.faqQuestion:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: -2px;
 }
 
 .faqAnswer {
-  padding: 0 1.5rem 1.25rem 1.5rem;
-  font-size: 0.95rem;
+  padding: 0 1.5rem 1.35rem 1.5rem;
+  font-size: var(--text-base);
   color: var(--color-muted);
-  line-height: 1.65;
+  line-height: 1.7;
 }
 
 /* Final CTA Section */
 .finalCtaSection {
-  padding: 6rem 1.5rem;
+  padding: clamp(4rem, 8vw, 6.5rem) 1.5rem;
   text-align: center;
   position: relative;
   z-index: 1;
-  background: linear-gradient(135deg, rgba(79, 70, 229, 0.1) 0%, rgba(59, 130, 246, 0.1) 100%);
+  background: linear-gradient(135deg, rgba(79, 70, 229, 0.08) 0%, rgba(59, 130, 246, 0.08) 100%);
   border-top: 1px solid var(--color-border);
+}
+
+:global(:root[data-theme="dark"]) .finalCtaSection {
+  background: linear-gradient(135deg, rgba(99, 102, 241, 0.12) 0%, rgba(56, 189, 248, 0.06) 100%);
 }
 
 .finalCtaBox {
@@ -295,16 +356,18 @@
 
 .finalTitle {
   font-family: var(--font-heading);
-  font-size: clamp(2rem, 4vw, 3rem);
+  font-size: clamp(2rem, 4.5vw, 3rem);
   font-weight: 800;
   color: var(--color-text);
   margin-bottom: 1rem;
   letter-spacing: -0.03em;
+  line-height: 1.2;
 }
 
 .finalSub {
-  font-size: 1.15rem;
+  font-size: clamp(1rem, 2vw, 1.2rem);
   color: var(--color-muted);
+  line-height: 1.65;
   margin-bottom: 2.5rem;
 }
 
@@ -319,13 +382,14 @@
 }
 
 .footerText {
-  font-size: 0.85rem;
+  font-size: var(--text-sm);
   color: var(--color-muted);
+  line-height: 1.5;
 }
 
 @keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
 @keyframes slideUp {
@@ -335,14 +399,18 @@
 
 @media (max-width: 992px) {
   .modesGrid { grid-template-columns: 1fr; }
-  .statsGrid { grid-template-columns: repeat(2, 1fr); }
+  .statsGrid { grid-template-columns: repeat(2, 1fr); gap: 1.5rem; }
 }
 
 @media (max-width: 640px) {
-  .hero { padding: 3rem 1rem 2.5rem 1rem; }
-  .ctaGroup { flex-direction: column; width: 100%; }
-  .primaryCta, .secondaryCta { width: 100%; justify-content: center; }
-  .statsGrid { grid-template-columns: 1fr; }
+  .hero { padding: 3rem 1rem 2rem 1rem; }
+  .ctaGroup { flex-direction: column; width: 100%; gap: 0.75rem; }
+  .primaryCta, .secondaryCta { width: 100%; min-width: 100%; }
+  .statsGrid { grid-template-columns: 1fr; gap: 1.5rem; }
+  .modesSection { padding: 3rem 1rem; }
+  .faqSection { padding: 3rem 1rem; }
+  .faqQuestion { padding: 1rem 1.15rem; }
+  .faqAnswer { padding: 0 1.15rem 1.15rem 1.15rem; }
 }
 
 @media print {

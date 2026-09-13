@@ -1,8 +1,8 @@
 // =============================================================
-// Topbar.jsx – Top navigation bar
+// Topbar.jsx – Top navigation bar with responsive mobile menu
 // =============================================================
 import { useState } from 'react';
-import { Search, Bell, ChevronDown } from 'lucide-react';
+import { Search, Bell, ChevronDown, Menu } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { useAuth } from '../../contexts/AuthContext';
 import { useAdaptive } from '../../contexts/AdaptiveContext';
@@ -10,7 +10,7 @@ import { useData } from '../../contexts/DataContext';
 import { ADAPTIVE_MODES } from '../../utils/constants';
 import styles from './Topbar.module.css';
 
-function Topbar({ pageTitle }) {
+function Topbar({ pageTitle, onToggleMobileMenu }) {
   const { user } = useAuth();
   const { currentMode, setMode, modeConfig } = useAdaptive();
   const { notifications } = useData();
@@ -26,6 +26,14 @@ function Topbar({ pageTitle }) {
   return (
     <header className={styles.topbar} role="banner">
       <div className={styles.left}>
+        <button
+          className={styles.menuBtn}
+          onClick={onToggleMobileMenu}
+          aria-label="Open navigation menu"
+          type="button"
+        >
+          <Menu size={20} />
+        </button>
         <h1 className={styles.pageTitle}>{pageTitle}</h1>
       </div>
 
@@ -47,6 +55,7 @@ function Topbar({ pageTitle }) {
             aria-haspopup="true"
             aria-expanded={showModeMenu}
             id="mode-switcher"
+            type="button"
           >
             <span className={styles.modeDot} style={{ background: modeConfig.color }} />
             <span className={styles.modeLabel}>{modeConfig.label}</span>
@@ -64,6 +73,7 @@ function Topbar({ pageTitle }) {
                   key={mode.id}
                   className={`${styles.modeOption} ${currentMode === mode.id ? styles.modeOptionActive : ''}`}
                   role="menuitem"
+                  type="button"
                   onClick={() => { setMode(mode.id); setShowModeMenu(false); }}
                 >
                   <span className={styles.modeOptionDot} style={{ background: mode.color }} />
@@ -82,6 +92,7 @@ function Topbar({ pageTitle }) {
             className={styles.iconBtn}
             onClick={() => setShowNotif((n) => !n)}
             aria-label="Notifications"
+            type="button"
           >
             <Bell size={18} />
             {badgeCount > 0 && (

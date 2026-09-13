@@ -22,7 +22,7 @@
 }
 
 .pageTitle {
-  font-size: var(--text-2xl);
+  font-size: clamp(1.5rem, 3.5vw, var(--text-2xl));
   font-weight: 800;
   color: var(--color-text);
   margin: 0;
@@ -58,6 +58,7 @@
   cursor: pointer;
   box-shadow: 0 4px 16px rgba(79, 70, 229, 0.35);
   transition: transform var(--transition-fast), opacity var(--transition-fast), box-shadow var(--transition-fast);
+  touch-action: manipulation;
 }
 
 .primaryBtn:hover {
@@ -74,19 +75,20 @@
   padding: 0.625rem 1.4rem;
   font-size: var(--text-sm);
   font-weight: 600;
-  background: rgba(255, 255, 255, 0.65);
+  background: var(--btn-secondary-bg);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   color: var(--color-text);
   border: 1px solid var(--color-border);
   border-radius: var(--radius-md);
   cursor: pointer;
-  transition: border-color var(--transition-fast), background var(--transition-fast), transform var(--transition-fast);
+  transition: border-color var(--transition-fast), background-color var(--transition-fast), transform var(--transition-fast);
+  touch-action: manipulation;
 }
 
 .secondaryBtn:hover {
   border-color: var(--color-primary);
-  background: rgba(255, 255, 255, 0.85);
+  background: var(--btn-secondary-hover-bg);
   transform: translateY(-1px);
 }
 
@@ -96,11 +98,11 @@
   align-items: center;
   justify-content: space-between;
   gap: var(--space-4);
-  background: rgba(255, 255, 255, 0.55);
+  background: var(--color-card-bg);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(255, 255, 255, 0.45);
-  border-radius: var(--radius-lg);
+  border: 1px solid var(--color-card-border);
+  border-radius: var(--radius-xl);
   padding: var(--space-3) var(--space-4);
   box-shadow: var(--shadow-xs);
   flex-wrap: wrap;
@@ -111,11 +113,12 @@
   align-items: center;
   gap: var(--space-2);
   flex: 1;
-  min-width: 240px;
-  background: rgba(255, 255, 255, 0.7);
-  border: 1px solid var(--color-border);
+  min-width: 220px;
+  background: var(--input-bg);
+  border: 1px solid var(--input-border);
   border-radius: var(--radius-md);
   padding: var(--space-2) var(--space-3);
+  min-height: 42px;
   transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
 }
 
@@ -134,7 +137,7 @@
   border: none;
   background: transparent;
   outline: none;
-  font-size: var(--text-sm);
+  font-size: var(--text-base);
   color: var(--color-text);
 }
 
@@ -151,11 +154,12 @@
 
 .selectInput {
   padding: var(--space-2) var(--space-3);
-  font-size: var(--text-xs);
+  min-height: 42px;
+  font-size: var(--text-sm);
   font-weight: 500;
   color: var(--color-text);
-  background: rgba(255, 255, 255, 0.7);
-  border: 1px solid var(--color-border);
+  background: var(--input-bg);
+  border: 1px solid var(--input-border);
   border-radius: var(--radius-md);
   outline: none;
   cursor: pointer;
@@ -169,16 +173,16 @@
 /* Grid Layout */
 .resourceGrid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
   gap: var(--space-5);
 }
 
 /* Resource Card */
 .resourceCard {
-  background: rgba(255, 255, 255, 0.72);
+  background: var(--color-card-bg);
   backdrop-filter: blur(24px);
   -webkit-backdrop-filter: blur(24px);
-  border: 1px solid rgba(79, 70, 229, 0.14);
+  border: 1px solid var(--color-card-border);
   border-radius: var(--radius-xl);
   padding: var(--space-6);
   display: flex;
@@ -220,8 +224,8 @@
 }
 
 .typeBadgeIcon {
-  width: 42px;
-  height: 42px;
+  width: 44px;
+  height: 44px;
   border-radius: var(--radius-md);
   display: flex;
   align-items: center;
@@ -235,6 +239,7 @@
   display: flex;
   flex-direction: column;
   gap: 4px;
+  min-width: 0;
 }
 
 .resourceTitle {
@@ -288,6 +293,10 @@
   color: var(--color-muted);
 }
 
+:global(:root[data-theme="dark"]) .typeChip {
+  background: rgba(255, 255, 255, 0.08);
+}
+
 .customTagChip {
   font-size: 11px;
   font-weight: 500;
@@ -297,12 +306,22 @@
   color: var(--color-primary);
 }
 
+:global(:root[data-theme="dark"]) .customTagChip {
+  background: rgba(96, 165, 250, 0.15);
+  color: #60A5FA;
+}
+
 .favToggleBtn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: 4px;
+  padding: 6px;
+  min-width: 32px;
+  min-height: 32px;
   border-radius: var(--radius-sm);
+  background: transparent;
+  border: none;
+  cursor: pointer;
   transition: transform var(--transition-fast);
 }
 
@@ -330,20 +349,21 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 32px;
-  height: 32px;
-  border-radius: var(--radius-sm);
+  width: 36px;
+  height: 36px;
+  border-radius: var(--radius-md);
   border: 1px solid var(--color-border);
-  background: rgba(255, 255, 255, 0.7);
+  background: var(--color-surface);
   color: var(--color-muted);
   cursor: pointer;
-  transition: color var(--transition-fast), border-color var(--transition-fast), background var(--transition-fast);
+  transition: color var(--transition-fast), border-color var(--transition-fast), background-color var(--transition-fast);
+  touch-action: manipulation;
 }
 
 .actionIconButton:hover {
   border-color: var(--color-primary);
   color: var(--color-primary);
-  background: #ffffff;
+  background: var(--color-surface-solid);
 }
 
 .actionIconButton.danger:hover {
@@ -352,7 +372,7 @@
   background: var(--color-danger-light);
 }
 
-/* AI Capabilities Section (Future Ready UI) */
+/* AI Capabilities Section */
 .aiSection {
   margin-top: var(--space-4);
   padding: var(--space-3);
@@ -363,6 +383,7 @@
   align-items: center;
   justify-content: space-between;
   gap: var(--space-2);
+  flex-wrap: wrap;
 }
 
 .aiBadge {
@@ -376,6 +397,10 @@
   letter-spacing: 0.05em;
 }
 
+:global(:root[data-theme="dark"]) .aiBadge {
+  color: #60A5FA;
+}
+
 .aiActions {
   display: flex;
   align-items: center;
@@ -385,13 +410,19 @@
 .aiPillBtn {
   font-size: 11px;
   font-weight: 600;
-  padding: 3px 8px;
+  padding: 4px 10px;
+  min-height: 28px;
   border-radius: var(--radius-full);
   border: 1px solid rgba(79, 70, 229, 0.25);
-  background: rgba(255, 255, 255, 0.8);
+  background: var(--color-surface);
   color: var(--color-primary);
   cursor: pointer;
   transition: all var(--transition-fast);
+}
+
+:global(:root[data-theme="dark"]) .aiPillBtn {
+  color: #60A5FA;
+  border-color: rgba(96, 165, 250, 0.35);
 }
 
 .aiPillBtn:hover {
@@ -407,7 +438,7 @@
   justify-content: center;
   padding: var(--space-12) var(--space-6);
   text-align: center;
-  background: rgba(255, 255, 255, 0.45);
+  background: var(--color-card-bg);
   backdrop-filter: blur(12px);
   border: 1px dashed var(--color-border-strong);
   border-radius: var(--radius-xl);
@@ -430,7 +461,7 @@
 .modalBackdrop {
   position: fixed;
   inset: 0;
-  background: rgba(15, 23, 42, 0.45);
+  background: rgba(15, 23, 42, 0.55);
   backdrop-filter: blur(8px);
   z-index: 1000;
   display: flex;
@@ -454,6 +485,11 @@
   overflow-y: auto;
 }
 
+:global(:root[data-theme="dark"]) .modalCard {
+  background: #0f172a;
+  border-color: rgba(255, 255, 255, 0.15);
+}
+
 .modalHeader {
   display: flex;
   justify-content: space-between;
@@ -465,6 +501,7 @@
   font-weight: 700;
   color: var(--color-text);
   margin: 0;
+  font-family: var(--font-heading);
 }
 
 .closeBtn {
@@ -473,8 +510,11 @@
   color: var(--color-muted);
   cursor: pointer;
   padding: 4px;
+  min-width: 32px;
+  min-height: 32px;
   display: flex;
   align-items: center;
+  justify-content: center;
   border-radius: var(--radius-sm);
 }
 
@@ -502,10 +542,11 @@
 .formSelect {
   width: 100%;
   padding: var(--space-2-5) var(--space-3);
-  font-size: var(--text-sm);
+  min-height: 44px;
+  font-size: var(--text-base);
   color: var(--color-text);
-  background: var(--color-bg, #f9fafb);
-  border: 1px solid var(--color-border);
+  background: var(--input-bg);
+  border: 1px solid var(--input-border);
   border-radius: var(--radius-md);
   outline: none;
   box-sizing: border-box;
@@ -524,36 +565,11 @@
   padding: var(--space-6);
   text-align: center;
   cursor: pointer;
-  transition: border-color var(--transition-fast), background var(--transition-fast);
+  transition: border-color var(--transition-fast), background-color var(--transition-fast);
   background: rgba(79, 70, 229, 0.02);
 }
 
 .fileDropArea:hover {
   border-color: var(--color-primary);
   background: rgba(79, 70, 229, 0.05);
-}
-
-/* Dark Mode Overrides */
-:global(:root[data-theme="dark"]) .controlBar,
-:global(:root[data-theme="dark"]) .resourceCard,
-:global(:root[data-theme="dark"]) .secondaryBtn,
-:global(:root[data-theme="dark"]) .searchBox,
-:global(:root[data-theme="dark"]) .selectInput,
-:global(:root[data-theme="dark"]) .actionIconButton {
-  background: rgba(15, 23, 42, 0.75);
-  border-color: rgba(255, 255, 255, 0.1);
-  color: var(--color-text);
-}
-
-:global(:root[data-theme="dark"]) .modalCard {
-  background: #0f172a;
-  border-color: rgba(255, 255, 255, 0.15);
-}
-
-:global(:root[data-theme="dark"]) .formInput,
-:global(:root[data-theme="dark"]) .formTextarea,
-:global(:root[data-theme="dark"]) .formSelect {
-  background: rgba(30, 41, 59, 0.8);
-  border-color: rgba(255, 255, 255, 0.15);
-  color: var(--color-text);
 }

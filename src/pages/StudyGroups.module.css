@@ -22,7 +22,7 @@
 }
 
 .pageTitle {
-  font-size: var(--text-2xl);
+  font-size: clamp(1.5rem, 3.5vw, var(--text-2xl));
   font-weight: 800;
   color: var(--color-text);
   margin: 0;
@@ -58,6 +58,7 @@
   cursor: pointer;
   box-shadow: 0 4px 16px rgba(79, 70, 229, 0.35);
   transition: transform var(--transition-fast), opacity var(--transition-fast), box-shadow var(--transition-fast);
+  touch-action: manipulation;
 }
 
 .primaryBtn:hover {
@@ -74,19 +75,20 @@
   padding: 0.625rem 1.4rem;
   font-size: var(--text-sm);
   font-weight: 600;
-  background: rgba(255, 255, 255, 0.65);
+  background: var(--btn-secondary-bg);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   color: var(--color-text);
   border: 1px solid var(--color-border);
   border-radius: var(--radius-md);
   cursor: pointer;
-  transition: border-color var(--transition-fast), background var(--transition-fast), transform var(--transition-fast);
+  transition: border-color var(--transition-fast), background-color var(--transition-fast), transform var(--transition-fast);
+  touch-action: manipulation;
 }
 
 .secondaryBtn:hover {
   border-color: var(--color-primary);
-  background: rgba(255, 255, 255, 0.85);
+  background: var(--btn-secondary-hover-bg);
 }
 
 /* Control Bar */
@@ -95,11 +97,11 @@
   align-items: center;
   justify-content: space-between;
   gap: var(--space-4);
-  background: rgba(255, 255, 255, 0.55);
+  background: var(--color-card-bg);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(255, 255, 255, 0.45);
-  border-radius: var(--radius-lg);
+  border: 1px solid var(--color-card-border);
+  border-radius: var(--radius-xl);
   padding: var(--space-3) var(--space-4);
   box-shadow: var(--shadow-xs);
   flex-wrap: wrap;
@@ -110,11 +112,12 @@
   align-items: center;
   gap: var(--space-2);
   flex: 1;
-  min-width: 240px;
-  background: rgba(255, 255, 255, 0.7);
-  border: 1px solid var(--color-border);
+  min-width: 220px;
+  background: var(--input-bg);
+  border: 1px solid var(--input-border);
   border-radius: var(--radius-md);
   padding: var(--space-2) var(--space-3);
+  min-height: 42px;
 }
 
 .searchBox:focus-within {
@@ -129,17 +132,18 @@
   border: none;
   background: transparent;
   outline: none;
-  font-size: var(--text-sm);
+  font-size: var(--text-base);
   color: var(--color-text);
 }
 
 .selectInput {
   padding: var(--space-2) var(--space-3);
-  font-size: var(--text-xs);
+  min-height: 42px;
+  font-size: var(--text-sm);
   font-weight: 500;
   color: var(--color-text);
-  background: rgba(255, 255, 255, 0.7);
-  border: 1px solid var(--color-border);
+  background: var(--input-bg);
+  border: 1px solid var(--input-border);
   border-radius: var(--radius-md);
   outline: none;
   cursor: pointer;
@@ -154,11 +158,16 @@
   gap: 2px;
 }
 
+:global(:root[data-theme="dark"]) .tabGroup {
+  background: rgba(255, 255, 255, 0.08);
+}
+
 .tabBtn {
   display: flex;
   align-items: center;
   gap: 4px;
-  padding: 5px 12px;
+  padding: 6px 14px;
+  min-height: 36px;
   font-size: var(--text-xs);
   font-weight: 600;
   border: none;
@@ -167,26 +176,31 @@
   color: var(--color-muted);
   cursor: pointer;
   transition: all var(--transition-fast);
+  touch-action: manipulation;
 }
 
 .tabBtn.activeTab {
-  background: #ffffff;
+  background: var(--color-surface-solid);
   color: var(--color-primary);
   box-shadow: var(--shadow-xs);
+}
+
+:global(:root[data-theme="dark"]) .tabBtn.activeTab {
+  color: #60A5FA;
 }
 
 /* Groups Directory Grid */
 .groupsGrid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
   gap: var(--space-5);
 }
 
 .groupCard {
-  background: rgba(255, 255, 255, 0.72);
+  background: var(--color-card-bg);
   backdrop-filter: blur(24px);
   -webkit-backdrop-filter: blur(24px);
-  border: 1px solid rgba(79, 70, 229, 0.16);
+  border: 1px solid var(--color-card-border);
   border-radius: var(--radius-xl);
   padding: var(--space-6);
   display: flex;
@@ -219,6 +233,11 @@
   text-transform: uppercase;
 }
 
+:global(:root[data-theme="dark"]) .subjectTag {
+  background: rgba(96, 165, 250, 0.15);
+  color: #60A5FA;
+}
+
 .groupTitle {
   font-size: var(--text-base);
   font-weight: 700;
@@ -231,7 +250,7 @@
   font-size: var(--text-xs);
   color: var(--color-muted);
   margin: 0;
-  line-height: 1.4;
+  line-height: 1.45;
 }
 
 .groupMetaRow {
@@ -246,9 +265,9 @@
 
 /* Detail Workspace View */
 .detailHeaderCard {
-  background: rgba(255, 255, 255, 0.75);
+  background: var(--color-card-bg);
   backdrop-filter: blur(20px);
-  border: 1px solid rgba(255, 255, 255, 0.6);
+  border: 1px solid var(--color-card-border);
   border-radius: var(--radius-xl);
   padding: var(--space-6);
   display: flex;
@@ -273,6 +292,7 @@
   align-items: center;
   gap: 6px;
   padding: var(--space-2) var(--space-4);
+  min-height: 40px;
   font-size: var(--text-xs);
   font-weight: 600;
   border: none;
@@ -281,6 +301,7 @@
   color: var(--color-muted);
   cursor: pointer;
   transition: all var(--transition-fast);
+  touch-action: manipulation;
 }
 
 .subTabBtn.activeSubTab {
@@ -289,9 +310,9 @@
 }
 
 .contentCard {
-  background: rgba(255, 255, 255, 0.65);
+  background: var(--color-card-bg);
   backdrop-filter: blur(16px);
-  border: 1px solid rgba(255, 255, 255, 0.5);
+  border: 1px solid var(--color-card-border);
   border-radius: var(--radius-xl);
   padding: var(--space-6);
   display: flex;
@@ -304,7 +325,7 @@
   align-items: center;
   justify-content: space-between;
   padding: var(--space-3) var(--space-4);
-  background: rgba(255, 255, 255, 0.7);
+  background: var(--color-surface);
   border: 1px solid var(--color-border);
   border-radius: var(--radius-md);
   font-size: var(--text-sm);
@@ -314,7 +335,7 @@
 .modalBackdrop {
   position: fixed;
   inset: 0;
-  background: rgba(15, 23, 42, 0.45);
+  background: rgba(15, 23, 42, 0.55);
   backdrop-filter: blur(8px);
   z-index: 1000;
   display: flex;
@@ -338,6 +359,11 @@
   overflow-y: auto;
 }
 
+:global(:root[data-theme="dark"]) .modalCard {
+  background: #0f172a;
+  border-color: rgba(255, 255, 255, 0.15);
+}
+
 .modalHeader {
   display: flex;
   justify-content: space-between;
@@ -349,6 +375,7 @@
   font-weight: 700;
   color: var(--color-text);
   margin: 0;
+  font-family: var(--font-heading);
 }
 
 .closeBtn {
@@ -378,10 +405,11 @@
 .formSelect {
   width: 100%;
   padding: var(--space-2-5) var(--space-3);
-  font-size: var(--text-sm);
+  min-height: 44px;
+  font-size: var(--text-base);
   color: var(--color-text);
-  background: var(--color-bg, #f9fafb);
-  border: 1px solid var(--color-border);
+  background: var(--input-bg);
+  border: 1px solid var(--input-border);
   border-radius: var(--radius-md);
   outline: none;
   box-sizing: border-box;
@@ -394,38 +422,11 @@
   justify-content: center;
   padding: var(--space-12) var(--space-6);
   text-align: center;
-  background: rgba(255, 255, 255, 0.45);
+  background: var(--color-card-bg);
   backdrop-filter: blur(12px);
   border: 1px dashed var(--color-border-strong);
   border-radius: var(--radius-xl);
   gap: var(--space-3);
   color: var(--color-muted);
   width: 100%;
-}
-
-/* Dark Mode Overrides */
-:global(:root[data-theme="dark"]) .controlBar,
-:global(:root[data-theme="dark"]) .groupCard,
-:global(:root[data-theme="dark"]) .detailHeaderCard,
-:global(:root[data-theme="dark"]) .contentCard,
-:global(:root[data-theme="dark"]) .listItem,
-:global(:root[data-theme="dark"]) .secondaryBtn,
-:global(:root[data-theme="dark"]) .searchBox,
-:global(:root[data-theme="dark"]) .selectInput {
-  background: rgba(15, 23, 42, 0.75);
-  border-color: rgba(255, 255, 255, 0.1);
-  color: var(--color-text);
-}
-
-:global(:root[data-theme="dark"]) .modalCard {
-  background: #0f172a;
-  border-color: rgba(255, 255, 255, 0.15);
-}
-
-:global(:root[data-theme="dark"]) .formInput,
-:global(:root[data-theme="dark"]) .formTextarea,
-:global(:root[data-theme="dark"]) .formSelect {
-  background: rgba(30, 41, 59, 0.8);
-  border-color: rgba(255, 255, 255, 0.15);
-  color: var(--color-text);
 }

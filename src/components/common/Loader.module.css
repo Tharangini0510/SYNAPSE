@@ -2,7 +2,7 @@
 
 .spinner {
   display: inline-block;
-  border: 2.5px solid rgba(17, 24, 39, 0.1);
+  border: 2.5px solid rgba(15, 23, 42, 0.12);
   border-top-color: var(--color-primary);
   border-radius: 50%;
   animation: spin 0.7s linear infinite;
@@ -18,7 +18,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: var(--space-3);
+  gap: var(--space-4);
   min-height: 100vh;
 }
 
@@ -26,6 +26,7 @@
   font-size: var(--text-sm);
   color: var(--color-muted);
   font-family: var(--font-body);
+  font-weight: 500;
 }
 
 .skeleton {
@@ -49,11 +50,30 @@
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
   border-radius: var(--radius-lg);
-  border: 1px solid rgba(255, 255, 255, 0.5);
+  border: 1px solid var(--color-border);
   box-shadow: var(--shadow-sm);
 }
 
 @keyframes shimmer {
   0%   { background-position: -600px 0; }
   100% { background-position: 600px 0; }
+}
+
+:global(:root[data-theme="dark"]) .spinner {
+  border-color: rgba(255, 255, 255, 0.15);
+  border-top-color: #60A5FA;
+}
+
+:global(:root[data-theme="dark"]) .skeleton {
+  background: linear-gradient(
+    90deg,
+    rgba(30, 41, 59, 0.7) 25%,
+    rgba(51, 65, 85, 0.85) 50%,
+    rgba(30, 41, 59, 0.7) 75%
+  );
+}
+
+:global(:root[data-theme="dark"]) .skeletonCard {
+  background: rgba(15, 23, 42, 0.85);
+  border-color: rgba(255, 255, 255, 0.12);
 }

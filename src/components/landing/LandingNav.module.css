@@ -5,31 +5,32 @@
   right: 0;
   width: 100%;
   z-index: 100;
-  background: rgba(246, 248, 252, 0.75);
+  background: rgba(246, 248, 252, 0.82);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
-  border-bottom: 1px solid rgba(15, 23, 42, 0.06);
+  border-bottom: 1px solid rgba(15, 23, 42, 0.08);
   transition: background-color 0.3s ease, border-color 0.3s ease;
 }
 
-:root[data-theme="dark"] .nav {
-  background: rgba(11, 17, 32, 0.82);
+:global(:root[data-theme="dark"]) .nav {
+  background: rgba(11, 17, 32, 0.88);
   border-bottom-color: rgba(255, 255, 255, 0.08);
 }
 
 .container {
   max-width: var(--content-max);
   margin: 0 auto;
-  padding: 0.85rem 1.5rem;
+  padding: 0.75rem 1.5rem;
   display: flex;
   align-items: center;
   justify-content: space-between;
+  min-height: 64px;
 }
 
 .logo {
   display: flex;
   align-items: center;
-  gap: 0.65rem;
+  gap: 0.75rem;
   text-decoration: none;
   color: var(--color-text);
   font-family: var(--font-heading);
@@ -39,15 +40,16 @@
 }
 
 .logoIcon {
-  width: 38px;
-  height: 38px;
-  border-radius: 10px;
+  width: 40px;
+  height: 40px;
+  border-radius: var(--radius-lg);
   background: linear-gradient(135deg, #6366F1 0%, #4F46E5 50%, #3B82F6 100%);
   display: flex;
   align-items: center;
   justify-content: center;
   box-shadow: 0 4px 16px rgba(79, 70, 229, 0.35);
   transition: transform 0.25s ease, box-shadow 0.25s ease;
+  flex-shrink: 0;
 }
 
 .logo:hover .logoIcon {
@@ -59,20 +61,21 @@
   color: var(--color-text);
   display: flex;
   align-items: center;
-  gap: 0.35rem;
+  gap: 0.4rem;
 }
 
 .versionBadge {
   font-size: 0.65rem;
   font-weight: 700;
   padding: 2px 7px;
-  border-radius: 999px;
+  border-radius: var(--radius-full);
   background: rgba(79, 70, 229, 0.1);
   color: var(--color-primary);
   border: 1px solid rgba(79, 70, 229, 0.2);
+  letter-spacing: 0.04em;
 }
 
-:root[data-theme="dark"] .versionBadge {
+:global(:root[data-theme="dark"]) .versionBadge {
   background: rgba(96, 165, 250, 0.15);
   color: #60A5FA;
   border-color: rgba(96, 165, 250, 0.3);
@@ -83,14 +86,18 @@
   align-items: center;
   gap: 1.75rem;
   list-style: none;
+  margin: 0;
+  padding: 0;
 }
 
 .link {
   color: var(--color-muted);
   text-decoration: none;
-  font-size: 0.9rem;
+  font-size: var(--text-sm);
   font-weight: 500;
+  padding: 0.35rem 0;
   transition: color 0.2s ease;
+  position: relative;
 }
 
 .link:hover {
@@ -108,14 +115,18 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 38px;
-  height: 38px;
-  border-radius: 10px;
+  min-width: 44px;
+  min-height: 44px;
+  width: 44px;
+  height: 44px;
+  border-radius: var(--radius-lg);
   border: 1px solid var(--color-border);
   background: var(--btn-secondary-bg);
   color: var(--color-text);
   cursor: pointer;
-  transition: background 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
+  box-shadow: var(--shadow-xs);
+  transition: background-color 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
+  touch-action: manipulation;
 }
 
 .themeBtn:hover {
@@ -126,43 +137,48 @@
 
 .loginBtn {
   padding: 0.5rem 1rem;
-  font-size: 0.9rem;
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+  font-size: var(--text-sm);
   font-weight: 600;
   color: var(--color-text);
   text-decoration: none;
-  border-radius: 10px;
-  transition: background 0.2s ease;
+  border-radius: var(--radius-lg);
+  transition: background-color 0.2s ease, color 0.2s ease;
 }
 
 .loginBtn:hover {
-  background: rgba(15, 23, 42, 0.05);
+  background: rgba(15, 23, 42, 0.06);
   text-decoration: none;
+  color: var(--color-text);
 }
 
-:root[data-theme="dark"] .loginBtn:hover {
+:global(:root[data-theme="dark"]) .loginBtn:hover {
   background: rgba(255, 255, 255, 0.08);
 }
 
 .getStartedBtn {
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   gap: 0.4rem;
   padding: 0.55rem 1.25rem;
-  font-size: 0.9rem;
+  min-height: 44px;
+  font-size: var(--text-sm);
   font-weight: 600;
-  color: #ffffff;
-  text-decoration: none;
-  border-radius: 10px;
+  color: #ffffff !important;
+  text-decoration: none !important;
+  border-radius: var(--radius-lg);
   background: linear-gradient(135deg, #4F46E5 0%, #3B82F6 100%);
   box-shadow: 0 4px 14px rgba(79, 70, 229, 0.35);
   transition: transform 0.2s ease, box-shadow 0.2s ease;
+  cursor: pointer;
 }
 
 .getStartedBtn:hover {
   transform: translateY(-1px);
   box-shadow: 0 6px 20px rgba(79, 70, 229, 0.48);
-  text-decoration: none;
-  color: #ffffff;
 }
 
 @media (max-width: 768px) {
@@ -170,10 +186,16 @@
     display: none;
   }
   .container {
-    padding: 0.75rem 1rem;
+    padding: 0.6rem 1rem;
+  }
+  .loginBtn {
+    display: none;
   }
   .getStartedBtn {
-    padding: 0.45rem 0.9rem;
-    font-size: 0.85rem;
+    padding: 0.45rem 1rem;
+    font-size: var(--text-xs);
+  }
+  .logoText span {
+    font-size: 1.1rem;
   }
 }

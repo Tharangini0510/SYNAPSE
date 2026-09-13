@@ -1,12 +1,14 @@
-/* AdaptiveModeBanner.module.css */
+/* AdaptiveModeBanner.module.css — contextual adaptive mode banner */
 
 .banner {
   background: var(--mode-banner-bg);
   border-bottom: 1px solid var(--mode-banner-border);
-  padding: var(--space-3) var(--space-6);
-  animation: slideDown 0.35s var(--ease-out) forwards;
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
+  padding: var(--space-2-5, 10px) var(--space-6);
+  animation: slideDown 0.3s var(--ease-out) forwards;
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  position: relative;
+  z-index: 10;
 }
 
 .inner {
@@ -22,19 +24,20 @@
   display: flex;
   align-items: center;
   flex-shrink: 0;
-  opacity: 0.85;
+  opacity: 0.9;
 }
 
 .text {
   flex: 1;
-  font-size: var(--text-sm);
+  font-size: var(--text-xs);
   color: var(--mode-banner-text);
   line-height: 1.45;
   margin: 0;
+  font-weight: 500;
 }
 
 .modeName {
-  font-weight: 600;
+  font-weight: 700;
 }
 
 .closeBtn {
@@ -45,7 +48,7 @@
   align-items: center;
   justify-content: center;
   color: var(--mode-banner-text);
-  opacity: 0.7;
+  opacity: 0.75;
   cursor: pointer;
   background: none;
   border: none;
@@ -55,10 +58,20 @@
 
 .closeBtn:hover {
   opacity: 1;
-  background-color: rgba(0, 0, 0, 0.06);
+  background-color: rgba(0, 0, 0, 0.08);
+}
+
+:global(:root[data-theme="dark"]) .closeBtn:hover {
+  background-color: rgba(255, 255, 255, 0.12);
 }
 
 @keyframes slideDown {
   from { opacity: 0; transform: translateY(-8px); }
   to   { opacity: 1; transform: translateY(0); }
+}
+
+@media (max-width: 640px) {
+  .banner {
+    padding: var(--space-2) var(--space-4);
+  }
 }

@@ -1,9 +1,9 @@
-/* Modal.module.css */
+/* Modal.module.css — Refined glass modal dialog system */
 
 .backdrop {
   position: fixed;
   inset: 0;
-  background-color: rgba(17, 24, 39, 0.45);
+  background-color: rgba(15, 23, 42, 0.6);
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
   display: flex;
@@ -15,21 +15,21 @@
 }
 
 .modal {
-  background: rgba(255, 255, 255, 0.92);
-  backdrop-filter: blur(24px);
-  -webkit-backdrop-filter: blur(24px);
-  border-radius: var(--radius-xl);
-  border: 1px solid rgba(255, 255, 255, 0.6);
-  box-shadow: var(--shadow-xl);
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(28px);
+  -webkit-backdrop-filter: blur(28px);
+  border-radius: var(--radius-2xl);
+  border: 1px solid rgba(255, 255, 255, 0.65);
+  box-shadow: var(--shadow-xl), 0 25px 60px rgba(0, 0, 0, 0.12);
   width: 100%;
   max-height: 90vh;
   overflow-y: auto;
   animation: scaleIn 0.3s var(--ease-out) forwards;
 }
 
-.sm  { max-width: 400px; }
-.md  { max-width: 560px; }
-.lg  { max-width: 780px; }
+.sm  { max-width: min(420px, calc(100vw - 32px)); }
+.md  { max-width: min(580px, calc(100vw - 32px)); }
+.lg  { max-width: min(800px, calc(100vw - 32px)); }
 
 .header {
   display: flex;
@@ -42,7 +42,7 @@
 .title {
   font-family: var(--font-heading);
   font-size: var(--text-lg);
-  font-weight: 600;
+  font-weight: 700;
   color: var(--color-text);
   letter-spacing: -0.02em;
 }
@@ -62,7 +62,7 @@
 }
 
 .closeBtn:hover {
-  background-color: rgba(17, 24, 39, 0.05);
+  background-color: rgba(15, 23, 42, 0.06);
   color: var(--color-text);
 }
 
@@ -78,4 +78,40 @@
 @keyframes scaleIn {
   from { transform: scale(0.97); opacity: 0; }
   to   { transform: scale(1); opacity: 1; }
+}
+
+/* ── Dark Mode Overrides ─────────────────── */
+:global(:root[data-theme="dark"]) .backdrop {
+  background-color: rgba(0, 0, 0, 0.75);
+}
+
+:global(:root[data-theme="dark"]) .modal {
+  background: rgba(15, 23, 42, 0.95);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.8), 0 0 30px rgba(99, 102, 241, 0.15);
+}
+
+:global(:root[data-theme="dark"]) .title {
+  color: #FFFFFF;
+}
+
+:global(:root[data-theme="dark"]) .closeBtn {
+  color: #CBD5E1;
+}
+
+:global(:root[data-theme="dark"]) .closeBtn:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  color: #FFFFFF;
+}
+
+@media (max-width: 640px) {
+  .backdrop {
+    padding: var(--space-3);
+  }
+  .header {
+    padding: var(--space-4) var(--space-5);
+  }
+  .body {
+    padding: var(--space-4) var(--space-5);
+  }
 }

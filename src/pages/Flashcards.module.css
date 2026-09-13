@@ -25,7 +25,7 @@
 }
 
 .pageTitle {
-  font-size: var(--text-2xl, 1.5rem);
+  font-size: clamp(1.5rem, 3.5vw, var(--text-2xl, 1.75rem));
   font-weight: 800;
   color: var(--color-text);
   margin: 0;
@@ -52,6 +52,7 @@
   justify-content: center;
   gap: 8px;
   padding: 10px 20px;
+  min-height: 44px;
   font-size: var(--text-sm, 0.875rem);
   font-weight: 600;
   background: var(--color-primary, #4f46e5);
@@ -61,6 +62,7 @@
   cursor: pointer;
   box-shadow: 0 4px 14px rgba(79, 70, 229, 0.25);
   transition: all var(--transition-fast, 0.15s ease);
+  touch-action: manipulation;
 }
 
 .primaryBtn:hover {
@@ -75,9 +77,10 @@
   justify-content: center;
   gap: 8px;
   padding: 10px 20px;
+  min-height: 44px;
   font-size: var(--text-sm, 0.875rem);
   font-weight: 600;
-  background: rgba(255, 255, 255, 0.7);
+  background: var(--btn-secondary-bg);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   color: var(--color-text);
@@ -85,11 +88,12 @@
   border-radius: var(--radius-md, 8px);
   cursor: pointer;
   transition: all var(--transition-fast, 0.15s ease);
+  touch-action: manipulation;
 }
 
 .secondaryBtn:hover {
   border-color: var(--color-primary);
-  background: rgba(255, 255, 255, 0.9);
+  background: var(--btn-secondary-hover-bg);
 }
 
 /* Control Bar: Filters, Search, View Modes */
@@ -98,11 +102,11 @@
   align-items: center;
   justify-content: space-between;
   gap: 1rem;
-  background: rgba(255, 255, 255, 0.65);
+  background: var(--color-card-bg);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(255, 255, 255, 0.5);
-  border-radius: var(--radius-lg, 12px);
+  border: 1px solid var(--color-card-border);
+  border-radius: var(--radius-xl, 14px);
   padding: 12px 16px;
   box-shadow: var(--shadow-xs);
   flex-wrap: wrap;
@@ -113,11 +117,12 @@
   align-items: center;
   gap: 8px;
   flex: 1;
-  min-width: 240px;
-  background: rgba(255, 255, 255, 0.8);
-  border: 1px solid var(--color-border);
+  min-width: 220px;
+  background: var(--input-bg);
+  border: 1px solid var(--input-border);
   border-radius: var(--radius-md, 8px);
   padding: 8px 12px;
+  min-height: 42px;
 }
 
 .searchBox:focus-within {
@@ -135,17 +140,18 @@
   border: none;
   background: transparent;
   outline: none;
-  font-size: var(--text-sm, 0.875rem);
+  font-size: var(--text-base, 1rem);
   color: var(--color-text);
 }
 
 .selectInput {
   padding: 8px 12px;
-  font-size: var(--text-xs, 0.75rem);
+  min-height: 42px;
+  font-size: var(--text-sm, 0.875rem);
   font-weight: 500;
   color: var(--color-text);
-  background: rgba(255, 255, 255, 0.8);
-  border: 1px solid var(--color-border);
+  background: var(--input-bg);
+  border: 1px solid var(--input-border);
   border-radius: var(--radius-md, 8px);
   outline: none;
   cursor: pointer;
@@ -160,11 +166,16 @@
   gap: 4px;
 }
 
+:global(:root[data-theme="dark"]) .modeToggle {
+  background: rgba(255, 255, 255, 0.08);
+}
+
 .toggleBtn {
   display: flex;
   align-items: center;
   gap: 6px;
   padding: 6px 14px;
+  min-height: 34px;
   font-size: var(--text-xs, 0.75rem);
   font-weight: 600;
   border: none;
@@ -173,12 +184,17 @@
   color: var(--color-muted);
   cursor: pointer;
   transition: all var(--transition-fast, 0.15s ease);
+  touch-action: manipulation;
 }
 
 .toggleBtn.activeMode {
-  background: #ffffff;
+  background: var(--color-surface-solid);
   color: var(--color-primary);
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  box-shadow: var(--shadow-xs);
+}
+
+:global(:root[data-theme="dark"]) .toggleBtn.activeMode {
+  color: #60A5FA;
 }
 
 /* =============================================================
@@ -186,10 +202,10 @@
    ============================================================= */
 
 .resourceInfoCard {
-  background: rgba(255, 255, 255, 0.7);
+  background: var(--color-card-bg);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(255, 255, 255, 0.5);
+  border: 1px solid var(--color-card-border);
   border-radius: var(--radius-xl, 16px);
   padding: 1rem 1.5rem;
   display: flex;
@@ -218,6 +234,11 @@
   flex-shrink: 0;
 }
 
+:global(:root[data-theme="dark"]) .resourceIconBadge {
+  background: rgba(96, 165, 250, 0.15);
+  color: #60A5FA;
+}
+
 .resourceTitleText {
   font-size: 0.9375rem;
   font-weight: 700;
@@ -231,7 +252,7 @@
   margin: 0;
 }
 
-/* Study Statistics Grid (Dashboard style) */
+/* Study Statistics Grid */
 .statsGrid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -240,10 +261,10 @@
 }
 
 .statCard {
-  background: rgba(255, 255, 255, 0.7);
+  background: var(--color-card-bg);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(255, 255, 255, 0.5);
+  border: 1px solid var(--color-card-border);
   border-radius: var(--radius-lg, 12px);
   padding: 1rem 1.25rem;
   display: flex;
@@ -284,9 +305,9 @@
 /* Progress Tracker Bar */
 .progressCard {
   width: 100%;
-  background: rgba(255, 255, 255, 0.7);
+  background: var(--color-card-bg);
   backdrop-filter: blur(16px);
-  border: 1px solid rgba(255, 255, 255, 0.5);
+  border: 1px solid var(--color-card-border);
   border-radius: var(--radius-lg, 12px);
   padding: 0.875rem 1.25rem;
   display: flex;
@@ -311,6 +332,10 @@
   overflow: hidden;
 }
 
+:global(:root[data-theme="dark"]) .progressBarBg {
+  background: rgba(255, 255, 255, 0.1);
+}
+
 .progressBarFill {
   height: 100%;
   background: linear-gradient(90deg, var(--color-primary), #8b5cf6);
@@ -321,7 +346,7 @@
 /* Card Perspective Container */
 .cardPerspective {
   width: 100%;
-  height: 380px;
+  height: clamp(280px, 45vh, 380px);
   perspective: 1000px;
   cursor: pointer;
 }
@@ -347,23 +372,28 @@
   -webkit-backface-visibility: hidden;
   backface-visibility: hidden;
   border-radius: var(--radius-2xl, 24px);
-  padding: 2.5rem;
+  padding: clamp(1.25rem, 3.5vw, 2.5rem);
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   box-sizing: border-box;
-  background: rgba(255, 255, 255, 0.88);
+  background: var(--color-surface-solid);
   backdrop-filter: blur(28px);
   -webkit-backdrop-filter: blur(28px);
-  border: 1.5px solid rgba(79, 70, 229, 0.2);
-  box-shadow: 0 16px 48px rgba(79, 70, 229, 0.12), 0 4px 16px rgba(0, 0, 0, 0.04);
+  border: 1.5px solid var(--color-border-strong);
+  box-shadow: 0 16px 48px rgba(79, 70, 229, 0.1), 0 4px 16px rgba(0, 0, 0, 0.04);
 }
 
 .cardBack {
   transform: rotateY(180deg);
-  background: linear-gradient(135deg, rgba(79, 70, 229, 0.08), rgba(255, 255, 255, 0.95));
-  border-color: rgba(79, 70, 229, 0.35);
-  box-shadow: 0 16px 48px rgba(79, 70, 229, 0.18);
+  background: linear-gradient(135deg, rgba(79, 70, 229, 0.08), var(--color-surface-solid));
+  border-color: var(--color-primary);
+  box-shadow: 0 16px 48px rgba(79, 70, 229, 0.15);
+}
+
+:global(:root[data-theme="dark"]) .cardBack {
+  background: linear-gradient(135deg, rgba(99, 102, 241, 0.15), rgba(15, 23, 42, 0.95));
+  border-color: #60A5FA;
 }
 
 .cardStageHeader {
@@ -383,6 +413,11 @@
   letter-spacing: 0.04em;
 }
 
+:global(:root[data-theme="dark"]) .subjectBadge {
+  background: rgba(96, 165, 250, 0.15);
+  color: #60A5FA;
+}
+
 .flipHint {
   font-size: 12px;
   color: var(--color-muted);
@@ -397,7 +432,7 @@
   align-items: center;
   justify-content: center;
   text-align: center;
-  font-size: 1.35rem;
+  font-size: clamp(1.15rem, 2.5vw, 1.35rem);
   font-weight: 600;
   color: var(--color-text);
   line-height: 1.5;
@@ -428,6 +463,11 @@
 .hard { background: rgba(239, 68, 68, 0.15); color: #ef4444; }
 .unreviewed { background: rgba(107, 114, 128, 0.15); color: #6b7280; }
 
+:global(:root[data-theme="dark"]) .easy { background: rgba(16, 185, 129, 0.25); color: #34d399; }
+:global(:root[data-theme="dark"]) .medium { background: rgba(245, 158, 11, 0.25); color: #fbbf24; }
+:global(:root[data-theme="dark"]) .hard { background: rgba(239, 68, 68, 0.25); color: #f87171; }
+:global(:root[data-theme="dark"]) .unreviewed { background: rgba(107, 114, 128, 0.25); color: #9ca3af; }
+
 /* =============================================================
    FLASHCARD CONTROLS BAR
    ============================================================= */
@@ -439,9 +479,9 @@
   width: 100%;
   gap: 0.75rem;
   flex-wrap: wrap;
-  background: rgba(255, 255, 255, 0.7);
+  background: var(--color-card-bg);
   backdrop-filter: blur(16px);
-  border: 1px solid rgba(255, 255, 255, 0.5);
+  border: 1px solid var(--color-card-border);
   border-radius: var(--radius-xl, 16px);
   padding: 0.875rem 1.25rem;
 }
@@ -450,6 +490,7 @@
   display: flex;
   align-items: center;
   gap: 0.5rem;
+  flex-wrap: wrap;
 }
 
 .ctrlBtn {
@@ -458,20 +499,22 @@
   justify-content: center;
   gap: 6px;
   padding: 8px 14px;
+  min-height: 40px;
   font-size: 0.8125rem;
   font-weight: 600;
   border-radius: var(--radius-md, 8px);
   border: 1px solid var(--color-border);
-  background: rgba(255, 255, 255, 0.8);
+  background: var(--color-surface);
   color: var(--color-text);
   cursor: pointer;
   transition: all var(--transition-fast, 0.15s ease);
+  touch-action: manipulation;
 }
 
 .ctrlBtn:hover:not(:disabled) {
   border-color: var(--color-primary);
   color: var(--color-primary);
-  background: rgba(79, 70, 229, 0.05);
+  background: rgba(79, 70, 229, 0.08);
 }
 
 .ctrlBtn:disabled {
@@ -485,6 +528,11 @@
   border-color: rgba(16, 185, 129, 0.3);
 }
 
+:global(:root[data-theme="dark"]) .knownBtn {
+  color: #34d399;
+  border-color: rgba(16, 185, 129, 0.4);
+}
+
 .knownBtn:hover {
   background: #10b981;
   color: #ffffff;
@@ -494,6 +542,11 @@
   background: rgba(239, 68, 68, 0.12);
   color: #dc2626;
   border-color: rgba(239, 68, 68, 0.3);
+}
+
+:global(:root[data-theme="dark"]) .revisionBtn {
+  color: #f87171;
+  border-color: rgba(239, 68, 68, 0.4);
 }
 
 .revisionBtn:hover {
@@ -506,10 +559,12 @@
   display: flex;
   align-items: center;
   gap: 6px;
+  flex-wrap: wrap;
 }
 
 .chipBtn {
   padding: 6px 12px;
+  min-height: 32px;
   font-size: 11px;
   font-weight: 700;
   border-radius: var(--radius-full, 9999px);
@@ -519,6 +574,7 @@
   cursor: pointer;
   transition: all var(--transition-fast, 0.15s ease);
   text-transform: uppercase;
+  touch-action: manipulation;
 }
 
 .chipBtn.activeChip {
@@ -530,15 +586,15 @@
 /* Manage Grid View */
 .cardsGrid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
   gap: 1rem;
 }
 
 .miniCard {
-  background: rgba(255, 255, 255, 0.7);
+  background: var(--color-card-bg);
   backdrop-filter: blur(14px);
   -webkit-backdrop-filter: blur(14px);
-  border: 1px solid rgba(255, 255, 255, 0.5);
+  border: 1px solid var(--color-card-border);
   border-radius: var(--radius-lg, 12px);
   padding: 1rem;
   display: flex;
@@ -560,13 +616,14 @@
   font-weight: 700;
   color: var(--color-text);
   margin: 0;
+  font-family: var(--font-heading);
 }
 
 .miniBack {
-  font-size: 0.75rem;
+  font-size: 0.8rem;
   color: var(--color-muted);
   margin: 0;
-  line-height: 1.4;
+  line-height: 1.45;
 }
 
 .miniMeta {
@@ -583,9 +640,12 @@
   color: var(--color-muted);
   cursor: pointer;
   padding: 6px;
+  min-width: 32px;
+  min-height: 32px;
   border-radius: var(--radius-sm, 6px);
   display: flex;
   align-items: center;
+  justify-content: center;
   transition: all var(--transition-fast, 0.15s ease);
 }
 
@@ -607,7 +667,7 @@
   justify-content: center;
   padding: 3.5rem 1.5rem;
   text-align: center;
-  background: rgba(255, 255, 255, 0.55);
+  background: var(--color-card-bg);
   backdrop-filter: blur(16px);
   border: 1px dashed var(--color-border);
   border-radius: var(--radius-xl, 16px);
@@ -620,6 +680,7 @@
   font-weight: 700;
   color: var(--color-text);
   margin: 0;
+  font-family: var(--font-heading);
 }
 
 .emptyStateSubtitle {
@@ -646,7 +707,7 @@
 .modalBackdrop {
   position: fixed;
   inset: 0;
-  background: rgba(15, 23, 42, 0.45);
+  background: rgba(15, 23, 42, 0.55);
   backdrop-filter: blur(8px);
   z-index: 1000;
   display: flex;
@@ -681,6 +742,7 @@
   font-weight: 700;
   color: var(--color-text);
   margin: 0;
+  font-family: var(--font-heading);
 }
 
 .formGroup {
@@ -702,45 +764,20 @@
 .formSelect {
   width: 100%;
   padding: 10px 12px;
-  font-size: 0.875rem;
+  min-height: 44px;
+  font-size: var(--text-base, 1rem);
   color: var(--color-text);
-  background: var(--color-bg, #f9fafb);
-  border: 1px solid var(--color-border);
+  background: var(--input-bg);
+  border: 1px solid var(--input-border);
   border-radius: var(--radius-md, 8px);
   outline: none;
   box-sizing: border-box;
 }
 
 /* Dark Mode Overrides */
-:global(:root[data-theme="dark"]) .controlBar,
-:global(:root[data-theme="dark"]) .resourceInfoCard,
-:global(:root[data-theme="dark"]) .statCard,
-:global(:root[data-theme="dark"]) .progressCard,
-:global(:root[data-theme="dark"]) .cardFront,
-:global(:root[data-theme="dark"]) .cardBack,
-:global(:root[data-theme="dark"]) .controlsRow,
-:global(:root[data-theme="dark"]) .ctrlBtn,
-:global(:root[data-theme="dark"]) .miniCard,
-:global(:root[data-theme="dark"]) .secondaryBtn,
-:global(:root[data-theme="dark"]) .searchBox,
-:global(:root[data-theme="dark"]) .selectInput,
-:global(:root[data-theme="dark"]) .emptyStateCard {
-  background: rgba(15, 23, 42, 0.75);
-  border-color: rgba(255, 255, 255, 0.12);
-  color: var(--color-text);
-}
-
 :global(:root[data-theme="dark"]) .modalCard {
   background: #0f172a;
   border-color: rgba(255, 255, 255, 0.15);
-}
-
-:global(:root[data-theme="dark"]) .formInput,
-:global(:root[data-theme="dark"]) .formTextarea,
-:global(:root[data-theme="dark"]) .formSelect {
-  background: rgba(30, 41, 59, 0.8);
-  border-color: rgba(255, 255, 255, 0.15);
-  color: var(--color-text);
 }
 
 /* Responsiveness */

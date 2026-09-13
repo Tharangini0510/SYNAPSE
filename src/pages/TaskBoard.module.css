@@ -20,10 +20,10 @@
   justify-content: space-between;
   align-items: center;
   padding: var(--space-3) var(--space-4);
-  background: rgba(255, 255, 255, 0.55);
+  background: var(--color-surface);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(255, 255, 255, 0.45);
+  border: 1px solid var(--color-border);
   border-radius: var(--radius-md);
   box-shadow: var(--shadow-xs);
 }
@@ -38,8 +38,8 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 28px;
-  height: 28px;
+  width: 30px;
+  height: 30px;
   border-radius: var(--radius-sm);
 }
 
@@ -47,10 +47,15 @@
 .inProgress { background: rgba(245, 158, 11, 0.12); color: #f59e0b; }
 .done       { background: rgba(16, 185, 129, 0.12); color: #10b981; }
 
+:global(:root[data-theme="dark"]) .todo       { background: rgba(99, 102, 241, 0.22); color: #818cf8; }
+:global(:root[data-theme="dark"]) .inProgress { background: rgba(245, 158, 11, 0.22); color: #fbbf24; }
+:global(:root[data-theme="dark"]) .done       { background: rgba(16, 185, 129, 0.22); color: #34d399; }
+
 .colLabel {
   font-size: var(--text-sm);
   font-weight: 700;
   color: var(--color-text);
+  font-family: var(--font-heading);
 }
 
 .countBadge {
@@ -59,8 +64,8 @@
   font-size: var(--text-xs);
   font-weight: 700;
   border-radius: var(--radius-full);
-  padding: 1px 7px;
-  line-height: 1.5;
+  padding: 2px 8px;
+  line-height: 1.4;
   box-shadow: 0 2px 6px rgba(79, 70, 229, 0.25);
 }
 
@@ -68,8 +73,10 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 28px;
-  height: 28px;
+  min-width: 32px;
+  min-height: 32px;
+  width: 32px;
+  height: 32px;
   border: 1px dashed var(--color-border);
   background: transparent;
   color: var(--color-muted);
@@ -78,9 +85,11 @@
   transition:
     border-color var(--transition-fast),
     color var(--transition-fast),
-    background var(--transition-fast),
+    background-color var(--transition-fast),
     transform var(--transition-fast);
+  touch-action: manipulation;
 }
+
 .addBtn:hover {
   border-color: var(--color-primary);
   color: var(--color-primary);
@@ -91,12 +100,12 @@
 /* ── Add Task Form ── */
 .addForm {
   padding: var(--space-4);
-  border: 1px solid rgba(79, 70, 229, 0.35);
-  border-radius: var(--radius-md);
+  border: 1px solid var(--color-border-strong);
+  border-radius: var(--radius-lg);
   display: flex;
   flex-direction: column;
   gap: var(--space-3);
-  background: rgba(255, 255, 255, 0.65);
+  background: var(--color-card-bg);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
   box-shadow: var(--shadow-sm);
@@ -112,32 +121,35 @@
   font-size: var(--text-sm);
   font-weight: 700;
   color: var(--color-text);
+  font-family: var(--font-heading);
 }
 
 .closeBtn {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 22px;
-  height: 22px;
+  min-width: 28px;
+  min-height: 28px;
   border: none;
   background: var(--color-border);
   color: var(--color-muted);
   border-radius: var(--radius-sm);
   cursor: pointer;
   transition:
-    background var(--transition-fast),
+    background-color var(--transition-fast),
     color var(--transition-fast);
 }
+
 .closeBtn:hover { background: rgba(239, 68, 68, 0.15); color: #ef4444; }
 
 .formInput {
   width: 100%;
-  padding: var(--space-2) var(--space-3);
-  font-size: var(--text-sm);
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-sm);
-  background: rgba(255, 255, 255, 0.7);
+  padding: 0.65rem 0.85rem;
+  min-height: 42px;
+  font-size: var(--text-base);
+  border: 1px solid var(--input-border);
+  border-radius: var(--radius-md);
+  background: var(--input-bg);
   color: var(--color-text);
   outline: none;
   box-sizing: border-box;
@@ -145,9 +157,10 @@
     border-color var(--transition-fast),
     box-shadow var(--transition-fast);
 }
+
 .formInput:focus {
   border-color: var(--color-primary);
-  box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.1);
+  box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.15);
 }
 
 .formRow {
@@ -158,17 +171,19 @@
 
 .formSelect {
   width: 100%;
-  padding: var(--space-2);
+  padding: 0.55rem 0.75rem;
+  min-height: 42px;
   font-size: var(--text-sm);
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-sm);
-  background: rgba(255, 255, 255, 0.7);
+  border: 1px solid var(--input-border);
+  border-radius: var(--radius-md);
+  background: var(--input-bg);
   color: var(--color-text);
   outline: none;
   cursor: pointer;
   box-sizing: border-box;
   transition: border-color var(--transition-fast);
 }
+
 .formSelect:focus { border-color: var(--color-primary); }
 
 .formActions {
@@ -179,25 +194,28 @@
 
 .cancelBtn {
   padding: var(--space-2) var(--space-3);
+  min-height: 38px;
   font-size: var(--text-sm);
   border: 1px solid var(--color-border);
   background: transparent;
   color: var(--color-muted);
-  border-radius: var(--radius-sm);
+  border-radius: var(--radius-md);
   cursor: pointer;
   transition:
-    background var(--transition-fast),
+    background-color var(--transition-fast),
     color var(--transition-fast);
 }
-.cancelBtn:hover { background: rgba(255, 255, 255, 0.6); }
+
+.cancelBtn:hover { background: var(--color-surface); }
 
 .saveBtn {
   padding: var(--space-2) var(--space-4);
+  min-height: 38px;
   font-size: var(--text-sm);
   border: none;
   background: var(--color-primary);
   color: #fff;
-  border-radius: var(--radius-sm);
+  border-radius: var(--radius-md);
   cursor: pointer;
   font-weight: 600;
   transition:
@@ -205,6 +223,7 @@
     box-shadow var(--transition-fast),
     transform var(--transition-fast);
 }
+
 .saveBtn:hover {
   opacity: 0.92;
   box-shadow: var(--shadow-sm);
@@ -229,18 +248,19 @@
   font-size: var(--text-sm);
   border: 1px dashed var(--color-border);
   border-radius: var(--radius-md);
-  background: rgba(255, 255, 255, 0.3);
+  background: rgba(255, 255, 255, 0.05);
 }
 
 /* ── Task Card ── */
 .taskCard {
   padding: 0;
   overflow: hidden;
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-lg);
-  background: rgba(255, 255, 255, 0.72);
+  border: 1px solid var(--color-card-border);
+  border-radius: var(--radius-xl);
+  background: var(--color-card-bg);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
+  box-shadow: var(--shadow-xs);
   transition:
     box-shadow var(--transition-fast),
     transform var(--transition-fast),
@@ -248,6 +268,7 @@
   display: flex;
   flex-direction: row;
 }
+
 .taskCard:hover {
   box-shadow: var(--shadow-md), 0 8px 24px rgba(79, 70, 229, 0.1);
   transform: translateY(-3px);
@@ -280,7 +301,7 @@
   font-size: var(--text-sm);
   font-weight: 600;
   color: var(--color-text);
-  line-height: 1.35;
+  line-height: 1.4;
   flex: 1;
 }
 
@@ -289,19 +310,20 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 20px;
-  height: 20px;
+  width: 24px;
+  height: 24px;
   border: none;
   background: transparent;
   color: var(--color-muted);
   border-radius: var(--radius-sm);
   cursor: pointer;
-  opacity: 0;
+  opacity: 0.6;
   transition:
     opacity var(--transition-fast),
-    background var(--transition-fast),
+    background-color var(--transition-fast),
     color var(--transition-fast);
 }
+
 .taskCard:hover .removeBtn { opacity: 1; }
 .removeBtn:hover { background: rgba(239, 68, 68, 0.12); color: #ef4444; }
 
@@ -357,21 +379,24 @@
 
 .moveBtn {
   font-size: var(--text-xs);
-  padding: 2px 8px;
+  padding: 4px 10px;
+  min-height: 30px;
   border: 1px solid var(--color-border);
-  background: rgba(255, 255, 255, 0.5);
+  background: var(--color-surface);
   color: var(--color-muted);
   border-radius: var(--radius-sm);
   cursor: pointer;
   transition:
     border-color var(--transition-fast),
     color var(--transition-fast),
-    background var(--transition-fast);
+    background-color var(--transition-fast);
+  touch-action: manipulation;
 }
+
 .moveBtn:hover {
   border-color: var(--color-primary);
   color: var(--color-primary);
-  background: rgba(79, 70, 229, 0.06);
+  background: rgba(79, 70, 229, 0.08);
 }
 
 .moveFwd {
@@ -387,6 +412,12 @@
 
 @media (max-width: 640px) {
   .board {
+    grid-template-columns: 1fr;
+  }
+  .removeBtn {
+    opacity: 1;
+  }
+  .formRow {
     grid-template-columns: 1fr;
   }
 }

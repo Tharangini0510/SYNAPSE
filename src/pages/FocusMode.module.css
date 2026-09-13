@@ -11,7 +11,7 @@
 .timerSection { width: 100%; }
 
 .timerCard {
-  padding: var(--space-8) var(--space-6);
+  padding: clamp(var(--space-6), 4vw, var(--space-8)) clamp(var(--space-4), 3vw, var(--space-6));
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -23,13 +23,15 @@
 .sessionTabs {
   display: flex;
   gap: var(--space-2);
-  background: rgba(255, 255, 255, 0.55);
+  background: var(--color-surface);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(255, 255, 255, 0.45);
+  border: 1px solid var(--color-border);
   border-radius: var(--radius-md);
   padding: var(--space-1);
   box-shadow: var(--shadow-xs);
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
 .sessionTab {
@@ -37,6 +39,7 @@
   align-items: center;
   gap: var(--space-2);
   padding: var(--space-2) var(--space-4);
+  min-height: 40px;
   font-size: var(--text-sm);
   font-weight: 500;
   border: none;
@@ -45,11 +48,13 @@
   border-radius: var(--radius-sm);
   cursor: pointer;
   transition:
-    background var(--transition-fast),
+    background-color var(--transition-fast),
     color var(--transition-fast),
     box-shadow var(--transition-fast);
   white-space: nowrap;
+  touch-action: manipulation;
 }
+
 .activeTab {
   background: var(--color-primary);
   color: #fff;
@@ -59,8 +64,8 @@
 /* ── Ring ── */
 .ringWrapper {
   position: relative;
-  width: 220px;
-  height: 220px;
+  width: clamp(180px, 35vw, 220px);
+  height: clamp(180px, 35vw, 220px);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -84,7 +89,7 @@
 }
 
 .timerTime {
-  font-size: 3.6rem;
+  font-size: clamp(2.5rem, 6vw, 3.6rem);
   font-weight: 800;
   color: var(--color-text);
   letter-spacing: -1px;
@@ -109,11 +114,14 @@
     transform var(--transition-fast),
     box-shadow var(--transition-base);
   box-shadow: 0 12px 36px rgba(79, 70, 229, 0.45);
+  touch-action: manipulation;
 }
+
 .playBtn:hover {
   transform: scale(1.08);
   box-shadow: 0 20px 56px rgba(79, 70, 229, 0.55);
 }
+
 .pauseBtn {
   background: var(--color-warning);
   box-shadow: 0 12px 40px rgba(245, 158, 11, 0.35);
@@ -129,16 +137,18 @@
   border: 1px solid var(--color-border);
   border-radius: var(--radius-md);
   padding: var(--space-3) var(--space-4);
-  background: rgba(255, 255, 255, 0.55);
+  background: var(--color-surface);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
+  min-height: 48px;
   transition:
     border-color var(--transition-fast),
     box-shadow var(--transition-fast);
 }
+
 .focusTaskRow:focus-within {
   border-color: var(--color-primary);
-  box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.1);
+  box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.15);
 }
 
 .focusIcon {
@@ -150,10 +160,11 @@
   flex: 1;
   border: none;
   outline: none;
-  font-size: var(--text-sm);
+  font-size: var(--text-base);
   color: var(--color-text);
   background: transparent;
 }
+
 .focusInput::placeholder { color: var(--color-muted); }
 
 /* ── Sidebar ── */
@@ -190,14 +201,15 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 40px;
-  height: 40px;
+  width: 42px;
+  height: 42px;
   border-radius: var(--radius-md);
   flex-shrink: 0;
-  background: rgba(255, 255, 255, 0.5);
+  background: var(--color-surface);
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
   box-shadow: var(--shadow-xs);
+  border: 1px solid var(--color-border);
 }
 
 .statValue {
@@ -217,10 +229,8 @@
 /* ── Quote ── */
 .quoteCard {
   padding: var(--space-5);
-  background:
-    linear-gradient(rgba(255, 255, 255, 0.55), rgba(255, 255, 255, 0.55)) padding-box,
-    linear-gradient(135deg, rgba(79, 70, 229, 0.2), rgba(96, 165, 250, 0.15)) border-box;
-  border: 1px solid transparent;
+  background: var(--color-card-bg);
+  border: 1px solid var(--color-card-border);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
   text-align: center;
@@ -231,6 +241,10 @@
   font-size: var(--text-2xl);
   color: var(--color-primary);
   margin-bottom: var(--space-2);
+}
+
+:global(:root[data-theme="dark"]) .quoteIcon {
+  color: #60A5FA;
 }
 
 .quoteText {
@@ -271,6 +285,4 @@
     flex-wrap: wrap;
     justify-content: center;
   }
-  .timerTime { font-size: 2.6rem; }
-  .ringWrapper { width: 180px; height: 180px; }
 }

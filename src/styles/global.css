@@ -1,22 +1,24 @@
 /* ==========================================================
    SYNAPSE – Global CSS Design System & Theme Engine
    Theme-Aware Design Tokens (Light Mode vs Dark Mode Palettes)
+   Fluid Typography & High-Definition Responsive Architecture
    ========================================================== */
 
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@400;500;600;700;800;900&display=swap');
 
 /* ── 1. Design Tokens ───────────────────────────────────── */
 
 /* Light Mode — Dedicated Palette & Tokens */
 :root,
 :root[data-theme="light"] {
-  /* Brand */
+  /* Brand Accents */
   --color-primary: #4F46E5;
   --color-primary-hover: #4338CA;
+  --color-primary-active: #3730A3;
   --color-primary-light: #EEF2FF;
-  --color-primary-glow: rgba(79, 70, 229, 0.28);
-  --color-secondary: #60A5FA;
-  --color-secondary-hover: #3B82F6;
+  --color-primary-glow: rgba(79, 70, 229, 0.22);
+  --color-secondary: #3B82F6;
+  --color-secondary-hover: #2563EB;
   --color-accent: #10B981;
   --color-accent-light: #D1FAE5;
   --color-warning: #F59E0B;
@@ -24,28 +26,28 @@
   --color-danger: #EF4444;
   --color-danger-light: #FEE2E2;
 
-  /* Surfaces */
-  --color-bg: #F6F8FC;
-  --color-surface: rgba(255, 255, 255, 0.72);
+  /* Surfaces & Canvas */
+  --color-bg: #F8FAFC;
+  --color-surface: rgba(255, 255, 255, 0.82);
   --color-surface-solid: #FFFFFF;
-  --color-surface-raised: rgba(255, 255, 255, 0.5);
-  --color-surface-overlay: rgba(255, 255, 255, 0.85);
-  --color-glass: rgba(255, 255, 255, 0.65);
-  --color-glass-strong: rgba(255, 255, 255, 0.78);
-  --color-dark: #111827;
+  --color-surface-raised: rgba(255, 255, 255, 0.65);
+  --color-surface-overlay: rgba(255, 255, 255, 0.94);
+  --color-glass: rgba(255, 255, 255, 0.72);
+  --color-glass-strong: rgba(255, 255, 255, 0.88);
+  --color-dark: #0F172A;
 
-  /* Typography — Dedicated Light Mode Palette */
+  /* Typography — Dedicated High-Contrast Light Mode Palette */
   --color-text: #0F172A;          /* Headings & Page titles (Slate 900) */
   --color-text-secondary: #334155;/* Body paragraphs & secondary text (Slate 700) */
   --color-muted: #64748B;         /* Captions, metadata, icons (Slate 500) */
   --color-placeholder: #94A3B8;   /* Input placeholders (Slate 400) */
 
   /* Surface & Card Tokens */
-  --color-card-bg: rgba(255, 255, 255, 0.72);
+  --color-card-bg: rgba(255, 255, 255, 0.78);
   --color-card-border: rgba(15, 23, 42, 0.08);
 
   /* Button Tokens */
-  --btn-secondary-bg: rgba(255, 255, 255, 0.8);
+  --btn-secondary-bg: rgba(255, 255, 255, 0.85);
   --btn-secondary-text: #0F172A;
   --btn-secondary-border: rgba(15, 23, 42, 0.12);
   --btn-secondary-hover-bg: #FFFFFF;
@@ -53,15 +55,15 @@
   --btn-secondary-hover-border: #4F46E5;
 
   /* Input Tokens */
-  --input-bg: rgba(255, 255, 255, 0.85);
+  --input-bg: rgba(255, 255, 255, 0.9);
   --input-text: #0F172A;
-  --input-border: rgba(15, 23, 42, 0.12);
+  --input-border: rgba(15, 23, 42, 0.14);
   --input-placeholder: #94A3B8;
   --input-focus-border: #4F46E5;
-  --input-focus-ring: rgba(79, 70, 229, 0.15);
+  --input-focus-ring: rgba(79, 70, 229, 0.16);
 
   /* Navigation Tokens */
-  --nav-bg: rgba(255, 255, 255, 0.72);
+  --nav-bg: rgba(255, 255, 255, 0.82);
   --nav-item-color: #64748B;
   --nav-item-hover-bg: rgba(15, 23, 42, 0.04);
   --nav-item-hover-color: #0F172A;
@@ -81,36 +83,36 @@
 
   /* Borders */
   --color-border: rgba(15, 23, 42, 0.08);
-  --color-border-glass: rgba(255, 255, 255, 0.45);
-  --color-border-strong: rgba(15, 23, 42, 0.12);
+  --color-border-glass: rgba(255, 255, 255, 0.55);
+  --color-border-strong: rgba(15, 23, 42, 0.14);
   --color-border-focus: #4F46E5;
 
   /* Shadows */
-  --shadow-xs: 0 1px 2px rgba(17, 24, 39, 0.04);
-  --shadow-sm: 0 2px 8px rgba(17, 24, 39, 0.05), 0 1px 2px rgba(17, 24, 39, 0.04);
-  --shadow-md: 0 8px 24px rgba(17, 24, 39, 0.07), 0 2px 6px rgba(17, 24, 39, 0.04);
-  --shadow-lg: 0 16px 40px rgba(17, 24, 39, 0.1), 0 4px 12px rgba(17, 24, 39, 0.05);
-  --shadow-xl: 0 24px 64px rgba(17, 24, 39, 0.12), 0 8px 20px rgba(17, 24, 39, 0.06);
-  --shadow-glow: 0 12px 40px rgba(79, 70, 229, 0.22);
-  --shadow-glass: 0 20px 60px rgba(0, 0, 0, 0.08);
+  --shadow-xs: 0 1px 2px rgba(15, 23, 42, 0.04);
+  --shadow-sm: 0 2px 8px rgba(15, 23, 42, 0.05), 0 1px 2px rgba(15, 23, 42, 0.04);
+  --shadow-md: 0 8px 24px rgba(15, 23, 42, 0.07), 0 2px 6px rgba(15, 23, 42, 0.04);
+  --shadow-lg: 0 16px 40px rgba(15, 23, 42, 0.09), 0 4px 12px rgba(15, 23, 42, 0.05);
+  --shadow-xl: 0 24px 64px rgba(15, 23, 42, 0.12), 0 8px 20px rgba(15, 23, 42, 0.06);
+  --shadow-glow: 0 12px 40px rgba(79, 70, 229, 0.2);
+  --shadow-glass: 0 20px 60px rgba(15, 23, 42, 0.07);
 
   /* Glass */
-  --glass-bg: rgba(255, 255, 255, 0.65);
+  --glass-bg: rgba(255, 255, 255, 0.72);
   --glass-blur: blur(24px);
-  --glass-border: 1px solid rgba(255, 255, 255, 0.5);
+  --glass-border: 1px solid rgba(255, 255, 255, 0.6);
 
   /* Typography Scale */
-  --font-heading: 'Poppins', system-ui, sans-serif;
-  --font-body: 'Inter', system-ui, sans-serif;
-  --text-xs: 0.75rem;
-  --text-sm: 0.875rem;
-  --text-base: 1rem;
-  --text-lg: 1.125rem;
-  --text-xl: 1.25rem;
-  --text-2xl: 1.5rem;
-  --text-3xl: 1.875rem;
-  --text-4xl: 2.25rem;
-  --text-5xl: 3rem;
+  --font-heading: 'Poppins', system-ui, -apple-system, sans-serif;
+  --font-body: 'Inter', system-ui, -apple-system, sans-serif;
+  --text-xs: clamp(0.7rem, 0.65rem + 0.25vw, 0.75rem);
+  --text-sm: clamp(0.8125rem, 0.78rem + 0.2vw, 0.875rem);
+  --text-base: clamp(0.9375rem, 0.9rem + 0.2vw, 1rem);
+  --text-lg: clamp(1.0625rem, 1rem + 0.35vw, 1.125rem);
+  --text-xl: clamp(1.1875rem, 1.1rem + 0.45vw, 1.25rem);
+  --text-2xl: clamp(1.35rem, 1.25rem + 0.65vw, 1.5rem);
+  --text-3xl: clamp(1.65rem, 1.45rem + 1vw, 1.875rem);
+  --text-4xl: clamp(2rem, 1.7rem + 1.5vw, 2.35rem);
+  --text-5xl: clamp(2.5rem, 2rem + 2.5vw, 3.25rem);
 
   /* Spacing */
   --space-1: 0.25rem;
@@ -126,23 +128,24 @@
   --space-20: 5rem;
   --space-24: 6rem;
 
-  --radius-sm: 12px;
-  --radius-md: 12px;
+  --radius-xs: 6px;
+  --radius-sm: 10px;
+  --radius-md: 14px;
   --radius-lg: 18px;
-  --radius-xl: 24px;
-  --radius-2xl: 24px;
+  --radius-xl: 22px;
+  --radius-2xl: 28px;
   --radius-full: 9999px;
 
   --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
   --ease-in-out: cubic-bezier(0.45, 0, 0.55, 1);
-  --transition-fast: 0.18s var(--ease-out);
-  --transition-base: 0.28s var(--ease-out);
-  --transition-slow: 0.45s var(--ease-out);
+  --transition-fast: 0.16s var(--ease-out);
+  --transition-base: 0.26s var(--ease-out);
+  --transition-slow: 0.42s var(--ease-out);
 
   --sidebar-width: 260px;
   --sidebar-collapsed-width: 72px;
   --topbar-height: 64px;
-  --content-max: 1440px;
+  --content-max: 1400px;
 
   --z-base: 1;
   --z-dropdown: 100;
@@ -151,33 +154,48 @@
   --z-modal: 400;
   --z-toast: 500;
 
-  --ambient-1: rgba(79, 70, 229, 0.14);
-  --ambient-2: rgba(96, 165, 250, 0.16);
-  --ambient-3: rgba(16, 185, 129, 0.08);
-  --ambient-4: rgba(79, 70, 229, 0.06);
-  --ambient-base: linear-gradient(165deg, #F6F8FC 0%, #EEF2FF 42%, #F0F9FF 72%, #F6F8FC 100%);
+  --ambient-1: rgba(79, 70, 229, 0.12);
+  --ambient-2: rgba(96, 165, 250, 0.14);
+  --ambient-3: rgba(16, 185, 129, 0.07);
+  --ambient-4: rgba(79, 70, 229, 0.05);
+  --ambient-base: linear-gradient(165deg, #F8FAFC 0%, #EEF2FF 40%, #F0F9FF 70%, #F8FAFC 100%);
 }
 
 /* Dark Mode — Dedicated Palette & Tokens */
 :root[data-theme="dark"] {
-  --color-bg: #0B1120;
-  --color-surface: rgba(15, 23, 42, 0.85);
+  --color-primary: #6366F1;
+  --color-primary-hover: #4F46E5;
+  --color-primary-active: #4338CA;
+  --color-primary-light: rgba(99, 102, 241, 0.18);
+  --color-primary-glow: rgba(99, 102, 241, 0.35);
+  --color-secondary: #60A5FA;
+  --color-secondary-hover: #3B82F6;
+  --color-accent: #34D399;
+  --color-accent-light: rgba(52, 211, 153, 0.18);
+  --color-warning: #FBBF24;
+  --color-warning-light: rgba(251, 191, 36, 0.18);
+  --color-danger: #F87171;
+  --color-danger-light: rgba(248, 113, 113, 0.18);
+
+  /* Deep Obsidian & Indigo Canvas */
+  --color-bg: #090E1A;
+  --color-surface: rgba(15, 23, 42, 0.88);
   --color-surface-solid: #0F172A;
-  --color-surface-raised: rgba(30, 41, 59, 0.85);
-  --color-surface-overlay: rgba(15, 23, 42, 0.95);
-  --color-glass: rgba(15, 23, 42, 0.82);
-  --color-glass-strong: rgba(30, 41, 59, 0.92);
+  --color-surface-raised: rgba(30, 41, 59, 0.88);
+  --color-surface-overlay: rgba(15, 23, 42, 0.96);
+  --color-glass: rgba(15, 23, 42, 0.84);
+  --color-glass-strong: rgba(30, 41, 59, 0.94);
   --color-dark: #F8FAFC;
 
-  /* Typography — Dedicated Dark Mode Palette */
-  --color-text: #FFFFFF;          /* Pure white titles for dark bg */
-  --color-text-secondary: #F1F5F9;/* High-contrast body text for dark bg (Slate 100) */
-  --color-muted: #CBD5E1;         /* High-contrast captions & muted text (Slate 300) */
+  /* Typography — Dedicated High-Contrast Dark Mode Palette */
+  --color-text: #FFFFFF;          /* Pure white titles for dark background */
+  --color-text-secondary: #F1F5F9;/* High-contrast body text (Slate 100) */
+  --color-muted: #CBD5E1;         /* Clear readable captions & metadata (Slate 300) */
   --color-placeholder: #94A3B8;   /* Input placeholders (Slate 400) */
 
   /* Surface & Card Tokens */
-  --color-card-bg: rgba(15, 23, 42, 0.85);
-  --color-card-border: rgba(255, 255, 255, 0.14);
+  --color-card-bg: rgba(15, 23, 42, 0.88);
+  --color-card-border: rgba(255, 255, 255, 0.13);
 
   /* Button Tokens */
   --btn-secondary-bg: rgba(30, 41, 59, 0.85);
@@ -188,9 +206,9 @@
   --btn-secondary-hover-border: #60A5FA;
 
   /* Input Tokens */
-  --input-bg: rgba(15, 23, 42, 0.85);
+  --input-bg: rgba(15, 23, 42, 0.88);
   --input-text: #FFFFFF;
-  --input-border: rgba(255, 255, 255, 0.2);
+  --input-border: rgba(255, 255, 255, 0.18);
   --input-placeholder: #94A3B8;
   --input-focus-border: #60A5FA;
   --input-focus-ring: rgba(96, 165, 250, 0.25);
@@ -198,16 +216,16 @@
   /* Navigation Tokens */
   --nav-bg: rgba(15, 23, 42, 0.92);
   --nav-item-color: #CBD5E1;
-  --nav-item-hover-bg: rgba(255, 255, 255, 0.1);
+  --nav-item-hover-bg: rgba(255, 255, 255, 0.08);
   --nav-item-hover-color: #FFFFFF;
   --nav-item-active-bg: linear-gradient(135deg, rgba(96, 165, 250, 0.22), rgba(129, 140, 248, 0.16));
   --nav-item-active-color: #93C5FD;
 
   /* Filter Chips */
-  --chip-bg: rgba(255, 255, 255, 0.1);
+  --chip-bg: rgba(255, 255, 255, 0.08);
   --chip-text: #F8FAFC;
-  --chip-border: rgba(255, 255, 255, 0.18);
-  --chip-hover-bg: rgba(255, 255, 255, 0.16);
+  --chip-border: rgba(255, 255, 255, 0.16);
+  --chip-hover-bg: rgba(255, 255, 255, 0.14);
   --chip-hover-text: #FFFFFF;
 
   /* Statistics & Metrics */
@@ -217,28 +235,27 @@
   /* Borders */
   --color-border: rgba(255, 255, 255, 0.12);
   --color-border-glass: rgba(255, 255, 255, 0.16);
-  --color-border-strong: rgba(255, 255, 255, 0.22);
+  --color-border-strong: rgba(255, 255, 255, 0.2);
   --color-border-focus: #60A5FA;
-  --color-primary-light: rgba(96, 165, 250, 0.18);
 
   /* Glassmorphic Effects */
-  --glass-bg: rgba(15, 23, 42, 0.85);
-  --glass-border: 1px solid rgba(255, 255, 255, 0.14);
+  --glass-bg: rgba(15, 23, 42, 0.88);
+  --glass-border: 1px solid rgba(255, 255, 255, 0.13);
 
-  /* Shadows for Depth */
+  /* Shadows for High Depth */
   --shadow-xs: 0 1px 3px rgba(0, 0, 0, 0.4);
   --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.45);
-  --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.5);
-  --shadow-lg: 0 16px 40px rgba(0, 0, 0, 0.6);
-  --shadow-xl: 0 24px 64px rgba(0, 0, 0, 0.7);
-  --shadow-glass: 0 20px 50px rgba(0, 0, 0, 0.5);
+  --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.52);
+  --shadow-lg: 0 16px 40px rgba(0, 0, 0, 0.62);
+  --shadow-xl: 0 24px 64px rgba(0, 0, 0, 0.72);
+  --shadow-glass: 0 20px 50px rgba(0, 0, 0, 0.55);
 
   /* Ambient Layered Background */
-  --ambient-1: rgba(96, 165, 250, 0.08);
-  --ambient-2: rgba(129, 140, 248, 0.06);
-  --ambient-3: rgba(52, 211, 153, 0.04);
-  --ambient-4: rgba(96, 165, 250, 0.03);
-  --ambient-base: linear-gradient(165deg, #0B1120 0%, #0F172A 45%, #0B1120 100%);
+  --ambient-1: rgba(99, 102, 241, 0.1);
+  --ambient-2: rgba(56, 189, 248, 0.08);
+  --ambient-3: rgba(52, 211, 153, 0.05);
+  --ambient-4: rgba(99, 102, 241, 0.04);
+  --ambient-base: linear-gradient(165deg, #090E1A 0%, #0F172A 45%, #090E1A 100%);
 }
 
 /* ── 2. Selection & Links ───────────────────────────────── */
@@ -263,6 +280,7 @@ html {
   font-size: 16px;
   scroll-behavior: smooth;
   -webkit-text-size-adjust: 100%;
+  text-rendering: optimizeLegibility;
 }
 
 body {
@@ -270,7 +288,7 @@ body {
   font-size: var(--text-base);
   color: var(--color-text);
   background-color: var(--color-bg);
-  line-height: 1.6;
+  line-height: 1.65;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   overflow-x: hidden;
@@ -302,7 +320,7 @@ body::after {
   inset: 0;
   z-index: -1;
   pointer-events: none;
-  opacity: 0.45;
+  opacity: 0.35;
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
   background-repeat: repeat;
   background-size: 180px 180px;
@@ -315,25 +333,26 @@ body::after {
   flex-direction: column;
   position: relative;
   z-index: 0;
+  width: 100%;
 }
 
-/* ── 4. Typography Hierarchy (Theme-Aware & High Contrast) ── */
+/* ── 4. Typography Hierarchy (Modern, Academic, High Contrast) ── */
 h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-heading);
   font-weight: 700;
-  line-height: 1.25;
+  line-height: 1.2;
   color: var(--color-text);
   letter-spacing: -0.025em;
   opacity: 1 !important;
   transition: color var(--transition-fast);
 }
 
-h1 { font-size: var(--text-4xl); }
-h2 { font-size: var(--text-3xl); }
-h3 { font-size: var(--text-2xl); }
-h4 { font-size: var(--text-xl); }
-h5 { font-size: var(--text-lg); }
-h6 { font-size: var(--text-base); }
+h1 { font-size: var(--text-4xl); font-weight: 800; letter-spacing: -0.035em; }
+h2 { font-size: var(--text-3xl); font-weight: 800; letter-spacing: -0.03em; }
+h3 { font-size: var(--text-2xl); font-weight: 700; letter-spacing: -0.025em; }
+h4 { font-size: var(--text-xl); font-weight: 700; letter-spacing: -0.02em; }
+h5 { font-size: var(--text-lg); font-weight: 600; letter-spacing: -0.015em; }
+h6 { font-size: var(--text-base); font-weight: 600; }
 
 p {
   color: var(--color-text-secondary);
@@ -415,6 +434,12 @@ ul, ol {
   padding-inline: var(--space-6);
 }
 
+@media (max-width: 640px) {
+  .container {
+    padding-inline: var(--space-4);
+  }
+}
+
 .flex { display: flex; }
 .flex-col { flex-direction: column; }
 .items-center { align-items: center; }
@@ -460,16 +485,16 @@ ul, ol {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: rgba(17, 24, 39, 0.12);
+  background: rgba(17, 24, 39, 0.14);
   border-radius: var(--radius-full);
 }
 
 :root[data-theme="dark"] ::-webkit-scrollbar-thumb {
-  background: rgba(255, 255, 255, 0.18);
+  background: rgba(255, 255, 255, 0.2);
 }
 
 :root[data-theme="dark"] ::-webkit-scrollbar-thumb:hover {
-  background: rgba(255, 255, 255, 0.3);
+  background: rgba(255, 255, 255, 0.35);
 }
 
 /* ── 8. Focus & Accessibility ───────────────────────────── */

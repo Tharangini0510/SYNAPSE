@@ -6,7 +6,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: var(--space-8);
+  padding: clamp(1rem, 3vw, var(--space-8));
   position: relative;
 }
 
@@ -27,7 +27,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: var(--space-8);
+  gap: clamp(1.25rem, 3vw, var(--space-8));
   animation: slideUp 0.5s var(--ease-out) forwards;
   position: relative;
   z-index: 1;
@@ -55,16 +55,18 @@
 
 .title {
   font-family: var(--font-heading);
-  font-size: var(--text-3xl);
-  font-weight: 700;
+  font-size: clamp(1.65rem, 4vw, var(--text-3xl));
+  font-weight: 800;
   color: var(--color-text);
   letter-spacing: -0.02em;
+  line-height: 1.2;
 }
 
 .subtitle {
   font-size: var(--text-base);
   color: var(--color-muted);
   margin: 0;
+  line-height: 1.5;
 }
 
 /* ── Step Indicator ──────────────────── */
@@ -86,7 +88,7 @@
   width: 36px;
   height: 36px;
   border-radius: 50%;
-  background: rgba(255, 255, 255, 0.55);
+  background: var(--color-surface);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   border: 1.5px solid var(--color-border);
@@ -152,32 +154,33 @@
   -webkit-backdrop-filter: var(--glass-blur);
   border-radius: var(--radius-2xl);
   box-shadow: var(--shadow-lg);
-  padding: var(--space-8);
-  border: 1px solid rgba(255, 255, 255, 0.5);
+  padding: clamp(1.25rem, 3.5vw, var(--space-8));
+  border: 1px solid var(--color-card-border);
 }
 
 /* ── Step Content ────────────────────── */
 .stepContent {
   display: flex;
   flex-direction: column;
-  gap: var(--space-6);
+  gap: var(--space-5);
   min-height: 280px;
   animation: fadeIn 0.35s var(--ease-out) forwards;
 }
 
 .stepTitle {
   font-family: var(--font-heading);
-  font-size: var(--text-2xl);
+  font-size: clamp(1.25rem, 3vw, var(--text-2xl));
   font-weight: 700;
   color: var(--color-text);
   letter-spacing: -0.02em;
+  line-height: 1.25;
 }
 
 .stepDesc {
   font-size: var(--text-sm);
   color: var(--color-muted);
-  margin: -var(--space-4) 0 0;
-  margin-top: calc(-1 * var(--space-4));
+  margin-top: calc(-1 * var(--space-3));
+  line-height: 1.5;
 }
 
 /* ── Fields ─────────────────────────── */
@@ -195,17 +198,18 @@
 
 .label {
   font-size: var(--text-sm);
-  font-weight: 500;
+  font-weight: 600;
   color: var(--color-text);
 }
 
 .input {
-  padding: var(--space-3) var(--space-4);
+  padding: 0.75rem 1rem;
+  min-height: 46px;
   border: 1.5px solid var(--color-border);
-  border-radius: var(--radius-md);
-  font-size: var(--text-sm);
+  border-radius: var(--radius-lg);
+  font-size: var(--text-base);
   color: var(--color-text);
-  background: rgba(255, 255, 255, 0.6);
+  background: var(--color-surface);
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
   outline: none;
@@ -218,8 +222,8 @@
 
 .input:focus {
   border-color: var(--color-primary);
-  box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.12);
-  background: rgba(255, 255, 255, 0.85);
+  box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.15);
+  background: var(--color-surface-solid);
 }
 
 .hint {
@@ -240,7 +244,7 @@
   padding: var(--space-4);
   border-radius: var(--radius-lg);
   border: 1.5px solid var(--color-border);
-  background: rgba(255, 255, 255, 0.5);
+  background: var(--color-surface);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   cursor: pointer;
@@ -253,19 +257,25 @@
   display: flex;
   flex-direction: column;
   gap: var(--space-2);
+  touch-action: manipulation;
 }
 
 .modeCard:hover {
   border-color: var(--mode-color, var(--color-primary));
-  background: rgba(255, 255, 255, 0.72);
+  background: var(--color-surface-solid);
   box-shadow: var(--shadow-sm);
   transform: translateY(-2px);
 }
 
 .modeCardActive {
   border-color: var(--mode-color, var(--color-primary));
-  background: rgba(238, 242, 255, 0.75);
-  box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.1), var(--shadow-sm);
+  background: var(--color-surface-solid);
+  box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.12), var(--shadow-sm);
+}
+
+:global(:root[data-theme="dark"]) .modeCardActive {
+  background: rgba(30, 41, 59, 0.85);
+  border-color: #60A5FA;
 }
 
 .modeEmoji {
@@ -288,8 +298,8 @@
   position: absolute;
   top: var(--space-3);
   right: var(--space-3);
-  width: 20px;
-  height: 20px;
+  width: 22px;
+  height: 22px;
   border-radius: 50%;
   background: var(--mode-color, var(--color-primary));
   color: #fff;
@@ -307,6 +317,7 @@
   margin-top: var(--space-6);
   padding-top: var(--space-6);
   border-top: 1px solid var(--color-border);
+  gap: var(--space-3);
 }
 
 /* ── Skip link ─────────────────────── */
@@ -318,7 +329,11 @@
   border: none;
   text-decoration: underline;
   text-underline-offset: 2px;
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
   transition: color var(--transition-fast);
+  touch-action: manipulation;
 }
 
 .skipLink:hover { color: var(--color-text); }
@@ -335,8 +350,13 @@
 }
 
 /* ── Responsive ─────────────────────── */
+@media (max-width: 640px) {
+  .stepLabel { display: none; }
+  .stepLine { width: 32px; }
+}
+
 @media (max-width: 520px) {
   .modeGrid { grid-template-columns: 1fr; }
-  .stepLine { width: 30px; }
-  .card { padding: var(--space-5); }
+  .stepLine { width: 20px; }
+  .card { padding: 1.25rem 1rem; border-radius: var(--radius-xl); }
 }

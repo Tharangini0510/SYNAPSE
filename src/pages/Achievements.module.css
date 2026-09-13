@@ -22,7 +22,7 @@
 }
 
 .pageTitle {
-  font-size: var(--text-2xl);
+  font-size: clamp(1.5rem, 3.5vw, var(--text-2xl));
   font-weight: 800;
   color: var(--color-text);
   margin: 0;
@@ -57,7 +57,7 @@
 }
 
 .summaryTitle {
-  font-size: var(--text-xl);
+  font-size: clamp(1.15rem, 3vw, var(--text-xl));
   font-weight: 800;
   color: var(--color-text);
   margin: 0;
@@ -74,24 +74,25 @@
   font-size: var(--text-2xl);
   font-weight: 800;
   color: var(--color-primary);
-  background: #ffffff;
+  background: var(--color-surface-solid);
   padding: var(--space-3) var(--space-5);
   border-radius: var(--radius-lg);
   box-shadow: var(--shadow-sm);
+  border: 1px solid var(--color-border);
 }
 
 /* Badges Grid */
 .badgesGrid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
   gap: var(--space-5);
 }
 
 .badgeCard {
-  background: rgba(255, 255, 255, 0.65);
+  background: var(--color-card-bg);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(255, 255, 255, 0.5);
+  border: 1px solid var(--color-card-border);
   border-radius: var(--radius-xl);
   padding: var(--space-5);
   display: flex;
@@ -105,7 +106,7 @@
 }
 
 .badgeCard.unlocked {
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.92) 0%, rgba(245, 158, 11, 0.08) 50%, rgba(79, 70, 229, 0.06) 100%);
+  background: linear-gradient(135deg, var(--color-surface-solid) 0%, rgba(245, 158, 11, 0.08) 50%, rgba(79, 70, 229, 0.06) 100%);
   border: 1.5px solid rgba(245, 158, 11, 0.4);
   box-shadow: 0 8px 28px rgba(245, 158, 11, 0.18), 0 4px 12px rgba(79, 70, 229, 0.1);
   animation: badgeUnlock 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
@@ -142,8 +143,12 @@
   transition: transform var(--transition-fast);
 }
 
+:global(:root[data-theme="dark"]) .badgeIconWrapper {
+  background: rgba(255, 255, 255, 0.08);
+}
+
 .unlocked .badgeIconWrapper {
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.9), rgba(245, 158, 11, 0.15));
+  background: linear-gradient(135deg, var(--color-surface-solid), rgba(245, 158, 11, 0.15));
   box-shadow: 0 4px 14px rgba(245, 158, 11, 0.25);
   transform: scale(1.05);
 }
@@ -209,12 +214,20 @@
   border-radius: var(--radius-full);
 }
 
+:global(:root[data-theme="dark"]) .lockedPill {
+  background: rgba(255, 255, 255, 0.1);
+}
+
 .progressBarBg {
   width: 100%;
   height: 6px;
   background: rgba(17, 24, 39, 0.08);
   border-radius: var(--radius-full);
   overflow: hidden;
+}
+
+:global(:root[data-theme="dark"]) .progressBarBg {
+  background: rgba(255, 255, 255, 0.1);
 }
 
 .progressBarFill {
@@ -239,4 +252,10 @@
 :global(:root[data-theme="dark"]) .summaryBadge {
   background: rgba(30, 41, 59, 0.9);
   color: #93C5FD;
+}
+
+@media (max-width: 480px) {
+  .badgesGrid {
+    grid-template-columns: 1fr;
+  }
 }
