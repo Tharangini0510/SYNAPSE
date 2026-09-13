@@ -1,0 +1,281 @@
+/* ProgressTracker.module.css - Glassmorphic Academic Progress Suite */
+
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+  width: 100%;
+}
+
+.headerRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--space-4);
+  flex-wrap: wrap;
+}
+
+.headerText {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+}
+
+.pageTitle {
+  font-size: var(--text-2xl);
+  font-weight: 800;
+  color: var(--color-text);
+  margin: 0;
+  font-family: var(--font-heading);
+  letter-spacing: -0.02em;
+}
+
+.pageSubtitle {
+  font-size: var(--text-sm);
+  color: var(--color-muted);
+  margin: 0;
+}
+
+/* Overview Cards Grid */
+.overviewGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: var(--space-4);
+}
+
+.statCard {
+  background: rgba(255, 255, 255, 0.75);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid rgba(79, 70, 229, 0.18);
+  border-radius: var(--radius-xl);
+  padding: var(--space-6);
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  box-shadow: var(--shadow-sm);
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast), border-color var(--transition-fast);
+}
+
+.statCard:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-lg), 0 10px 30px rgba(79, 70, 229, 0.12);
+  border-color: rgba(79, 70, 229, 0.35);
+}
+
+.statIconBadge {
+  width: 48px;
+  height: 48px;
+  border-radius: var(--radius-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.statContent {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.statValue {
+  font-size: var(--text-2xl);
+  font-weight: 800;
+  color: var(--color-text);
+  font-family: var(--font-heading);
+  line-height: 1.1;
+}
+
+.statLabel {
+  font-size: var(--text-xs);
+  color: var(--color-muted);
+  font-weight: 500;
+}
+
+/* Circular Progress Section */
+.circularSection {
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  gap: var(--space-6);
+  align-items: center;
+}
+
+.circularCard {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  border-radius: var(--radius-xl);
+  padding: var(--space-6);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: var(--space-4);
+  box-shadow: var(--shadow-md);
+}
+
+.circleSvgContainer {
+  position: relative;
+  width: 140px;
+  height: 140px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.circleSvgText {
+  position: absolute;
+  font-size: var(--text-3xl);
+  font-weight: 800;
+  color: var(--color-primary);
+  font-family: var(--font-heading);
+}
+
+/* Subject Breakdown Progress */
+.subjectsCard {
+  background: rgba(255, 255, 255, 0.65);
+  backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  border-radius: var(--radius-xl);
+  padding: var(--space-6);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  box-shadow: var(--shadow-sm);
+}
+
+.cardTitle {
+  font-size: var(--text-lg);
+  font-weight: 700;
+  color: var(--color-text);
+  margin: 0;
+  font-family: var(--font-heading);
+}
+
+.subjectProgressList {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.subjectProgressItem {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+}
+
+.subjectHeaderRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: var(--text-xs);
+  font-weight: 600;
+  color: var(--color-text);
+}
+
+.progressBarBg {
+  width: 100%;
+  height: 8px;
+  background: rgba(17, 24, 39, 0.07);
+  border-radius: var(--radius-full);
+  overflow: hidden;
+}
+
+.progressBarFill {
+  height: 100%;
+  background: var(--color-primary);
+  border-radius: var(--radius-full);
+  transition: width 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Milestones Grid */
+.milestonesGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: var(--space-4);
+}
+
+.milestoneCard {
+  background: rgba(255, 255, 255, 0.65);
+  backdrop-filter: blur(14px);
+  border: 1px solid rgba(255, 255, 255, 0.45);
+  border-radius: var(--radius-lg);
+  padding: var(--space-5);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  box-shadow: var(--shadow-xs);
+}
+
+.milestoneTop {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.milestoneIcon {
+  width: 36px;
+  height: 36px;
+  border-radius: var(--radius-sm);
+  background: rgba(79, 70, 229, 0.1);
+  color: var(--color-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Activity Timeline */
+.timelineCard {
+  background: rgba(255, 255, 255, 0.65);
+  backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  border-radius: var(--radius-xl);
+  padding: var(--space-6);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.timelineList {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  position: relative;
+}
+
+.timelineItem {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-3);
+  padding: var(--space-3);
+  border-radius: var(--radius-md);
+  background: rgba(255, 255, 255, 0.5);
+  border: 1px solid var(--color-border);
+}
+
+.timelineDot {
+  width: 10px;
+  height: 10px;
+  border-radius: var(--radius-full);
+  background: var(--color-primary);
+  margin-top: 5px;
+  flex-shrink: 0;
+}
+
+/* Dark Mode Overrides */
+:global(:root[data-theme="dark"]) .statCard,
+:global(:root[data-theme="dark"]) .circularCard,
+:global(:root[data-theme="dark"]) .subjectsCard,
+:global(:root[data-theme="dark"]) .milestoneCard,
+:global(:root[data-theme="dark"]) .timelineCard,
+:global(:root[data-theme="dark"]) .timelineItem {
+  background: rgba(15, 23, 42, 0.75);
+  border-color: rgba(255, 255, 255, 0.1);
+  color: var(--color-text);
+}
+
+:global(:root[data-theme="dark"]) .progressBarBg {
+  background: rgba(255, 255, 255, 0.1);
+}

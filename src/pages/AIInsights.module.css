@@ -1,0 +1,185 @@
+/* AIInsights.module.css - Glassmorphic Intelligent Insights Dashboard */
+
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+  width: 100%;
+}
+
+.headerRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--space-4);
+  flex-wrap: wrap;
+}
+
+.headerText {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+}
+
+.pageTitle {
+  font-size: var(--text-2xl);
+  font-weight: 800;
+  color: var(--color-text);
+  margin: 0;
+  font-family: var(--font-heading);
+  letter-spacing: -0.02em;
+}
+
+.pageSubtitle {
+  font-size: var(--text-sm);
+  color: var(--color-muted);
+  margin: 0;
+}
+
+/* AI Header Banner */
+.aiBanner {
+  background: linear-gradient(135deg, rgba(79, 70, 229, 0.12), rgba(124, 58, 237, 0.12));
+  border: 1px solid rgba(79, 70, 229, 0.25);
+  border-radius: var(--radius-xl);
+  padding: var(--space-6);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-4);
+  box-shadow: var(--shadow-sm);
+  flex-wrap: wrap;
+}
+
+.aiBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--color-primary);
+  background: #ffffff;
+  padding: 4px 12px;
+  border-radius: var(--radius-full);
+  box-shadow: var(--shadow-xs);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* Insights Cards Grid */
+.insightsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: var(--space-5);
+}
+
+.insightCard {
+  background: rgba(255, 255, 255, 0.75);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid rgba(79, 70, 229, 0.2);
+  border-radius: var(--radius-xl);
+  padding: var(--space-6);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  box-shadow: var(--shadow-sm);
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast), border-color var(--transition-fast);
+}
+
+.insightCard:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lg), 0 12px 32px rgba(79, 70, 229, 0.15);
+  border-color: rgba(79, 70, 229, 0.45);
+}
+
+.cardHeader {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+.iconWrapper {
+  width: 42px;
+  height: 42px;
+  border-radius: var(--radius-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+}
+
+.cardTitle {
+  font-size: var(--text-base);
+  font-weight: 700;
+  color: var(--color-text);
+  margin: 0;
+  font-family: var(--font-heading);
+}
+
+.cardContent {
+  font-size: var(--text-sm);
+  color: var(--color-text);
+  line-height: 1.5;
+  margin: 0;
+}
+
+/* Recommendations List */
+.recommendationsCard {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(79, 70, 229, 0.25);
+  border-radius: var(--radius-xl);
+  padding: var(--space-6);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  box-shadow: var(--shadow-md);
+}
+
+.recList {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.recItem {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-3);
+  padding: var(--space-3-5) var(--space-4);
+  border-radius: var(--radius-lg);
+  background: rgba(79, 70, 229, 0.04);
+  border: 1px solid rgba(79, 70, 229, 0.12);
+  font-size: var(--text-sm);
+  color: var(--color-text);
+  line-height: 1.5;
+}
+
+.recBullet {
+  width: 24px;
+  height: 24px;
+  border-radius: var(--radius-full);
+  background: var(--color-primary);
+  color: #ffffff;
+  font-size: 12px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+/* Dark Mode Overrides */
+:global(:root[data-theme="dark"]) .insightCard,
+:global(:root[data-theme="dark"]) .recommendationsCard,
+:global(:root[data-theme="dark"]) .recItem {
+  background: rgba(15, 23, 42, 0.75);
+  border-color: rgba(255, 255, 255, 0.1);
+  color: var(--color-text);
+}
+
+:global(:root[data-theme="dark"]) .aiBadge {
+  background: rgba(30, 41, 59, 0.9);
+  color: #93C5FD;
+}

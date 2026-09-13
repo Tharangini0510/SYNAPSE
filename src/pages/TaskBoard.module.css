@@ -1,0 +1,392 @@
+/* TaskBoard.module.css */
+
+.board {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-5);
+  align-items: start;
+}
+
+/* ── Column ── */
+.column {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  min-height: 400px;
+}
+
+.colHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--space-3) var(--space-4);
+  background: rgba(255, 255, 255, 0.55);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.45);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-xs);
+}
+
+.colTitleRow {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.colIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border-radius: var(--radius-sm);
+}
+
+.todo       { background: rgba(99, 102, 241, 0.12); color: #6366f1; }
+.inProgress { background: rgba(245, 158, 11, 0.12); color: #f59e0b; }
+.done       { background: rgba(16, 185, 129, 0.12); color: #10b981; }
+
+.colLabel {
+  font-size: var(--text-sm);
+  font-weight: 700;
+  color: var(--color-text);
+}
+
+.countBadge {
+  background: var(--color-primary);
+  color: #fff;
+  font-size: var(--text-xs);
+  font-weight: 700;
+  border-radius: var(--radius-full);
+  padding: 1px 7px;
+  line-height: 1.5;
+  box-shadow: 0 2px 6px rgba(79, 70, 229, 0.25);
+}
+
+.addBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border: 1px dashed var(--color-border);
+  background: transparent;
+  color: var(--color-muted);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition:
+    border-color var(--transition-fast),
+    color var(--transition-fast),
+    background var(--transition-fast),
+    transform var(--transition-fast);
+}
+.addBtn:hover {
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+  background: rgba(79, 70, 229, 0.08);
+  transform: translateY(-1px);
+}
+
+/* ── Add Task Form ── */
+.addForm {
+  padding: var(--space-4);
+  border: 1px solid rgba(79, 70, 229, 0.35);
+  border-radius: var(--radius-md);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  background: rgba(255, 255, 255, 0.65);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  box-shadow: var(--shadow-sm);
+}
+
+.formHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.formTitle {
+  font-size: var(--text-sm);
+  font-weight: 700;
+  color: var(--color-text);
+}
+
+.closeBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 22px;
+  height: 22px;
+  border: none;
+  background: var(--color-border);
+  color: var(--color-muted);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition:
+    background var(--transition-fast),
+    color var(--transition-fast);
+}
+.closeBtn:hover { background: rgba(239, 68, 68, 0.15); color: #ef4444; }
+
+.formInput {
+  width: 100%;
+  padding: var(--space-2) var(--space-3);
+  font-size: var(--text-sm);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  background: rgba(255, 255, 255, 0.7);
+  color: var(--color-text);
+  outline: none;
+  box-sizing: border-box;
+  transition:
+    border-color var(--transition-fast),
+    box-shadow var(--transition-fast);
+}
+.formInput:focus {
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.1);
+}
+
+.formRow {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-2);
+}
+
+.formSelect {
+  width: 100%;
+  padding: var(--space-2);
+  font-size: var(--text-sm);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  background: rgba(255, 255, 255, 0.7);
+  color: var(--color-text);
+  outline: none;
+  cursor: pointer;
+  box-sizing: border-box;
+  transition: border-color var(--transition-fast);
+}
+.formSelect:focus { border-color: var(--color-primary); }
+
+.formActions {
+  display: flex;
+  justify-content: flex-end;
+  gap: var(--space-2);
+}
+
+.cancelBtn {
+  padding: var(--space-2) var(--space-3);
+  font-size: var(--text-sm);
+  border: 1px solid var(--color-border);
+  background: transparent;
+  color: var(--color-muted);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition:
+    background var(--transition-fast),
+    color var(--transition-fast);
+}
+.cancelBtn:hover { background: rgba(255, 255, 255, 0.6); }
+
+.saveBtn {
+  padding: var(--space-2) var(--space-4);
+  font-size: var(--text-sm);
+  border: none;
+  background: var(--color-primary);
+  color: #fff;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  font-weight: 600;
+  transition:
+    opacity var(--transition-fast),
+    box-shadow var(--transition-fast),
+    transform var(--transition-fast);
+}
+.saveBtn:hover {
+  opacity: 0.92;
+  box-shadow: var(--shadow-sm);
+  transform: translateY(-1px);
+}
+
+/* ── Task List ── */
+.taskList {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.emptyCol {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  padding: var(--space-8) var(--space-4);
+  color: var(--color-muted);
+  font-size: var(--text-sm);
+  border: 1px dashed var(--color-border);
+  border-radius: var(--radius-md);
+  background: rgba(255, 255, 255, 0.3);
+}
+
+/* ── Task Card ── */
+.taskCard {
+  padding: 0;
+  overflow: hidden;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  background: rgba(255, 255, 255, 0.72);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  transition:
+    box-shadow var(--transition-fast),
+    transform var(--transition-fast),
+    border-color var(--transition-fast);
+  display: flex;
+  flex-direction: row;
+}
+.taskCard:hover {
+  box-shadow: var(--shadow-md), 0 8px 24px rgba(79, 70, 229, 0.1);
+  transform: translateY(-3px);
+  border-color: rgba(79, 70, 229, 0.35);
+}
+
+.priorityStripe {
+  width: 4px;
+  flex-shrink: 0;
+  border-radius: var(--radius-md) 0 0 var(--radius-md);
+}
+
+.taskBody {
+  padding: var(--space-3) var(--space-4);
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.taskTop {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: var(--space-2);
+}
+
+.taskTitle {
+  font-size: var(--text-sm);
+  font-weight: 600;
+  color: var(--color-text);
+  line-height: 1.35;
+  flex: 1;
+}
+
+.removeBtn {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  border: none;
+  background: transparent;
+  color: var(--color-muted);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  opacity: 0;
+  transition:
+    opacity var(--transition-fast),
+    background var(--transition-fast),
+    color var(--transition-fast);
+}
+.taskCard:hover .removeBtn { opacity: 1; }
+.removeBtn:hover { background: rgba(239, 68, 68, 0.12); color: #ef4444; }
+
+.taskMeta {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  flex-wrap: wrap;
+}
+
+.subjectBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-1);
+  font-size: var(--text-xs);
+  font-weight: 600;
+  padding: 2px 7px;
+  border-radius: var(--radius-full);
+}
+
+.priorityBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-1);
+  font-size: var(--text-xs);
+  font-weight: 600;
+}
+
+.dueDate {
+  display: flex;
+  align-items: center;
+  gap: var(--space-1);
+  font-size: var(--text-xs);
+  color: var(--color-muted);
+}
+
+.taskOverdue .taskTitle {
+  color: var(--color-danger);
+}
+
+.dueDateOverdue {
+  color: var(--color-danger);
+  font-weight: 600;
+}
+
+/* ── Move Buttons ── */
+.moveRow {
+  display: flex;
+  gap: var(--space-2);
+  margin-top: var(--space-1);
+  flex-wrap: wrap;
+}
+
+.moveBtn {
+  font-size: var(--text-xs);
+  padding: 2px 8px;
+  border: 1px solid var(--color-border);
+  background: rgba(255, 255, 255, 0.5);
+  color: var(--color-muted);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition:
+    border-color var(--transition-fast),
+    color var(--transition-fast),
+    background var(--transition-fast);
+}
+.moveBtn:hover {
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+  background: rgba(79, 70, 229, 0.06);
+}
+
+.moveFwd {
+  margin-left: auto;
+}
+
+/* ── Responsive ── */
+@media (max-width: 1024px) {
+  .board {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 640px) {
+  .board {
+    grid-template-columns: 1fr;
+  }
+}

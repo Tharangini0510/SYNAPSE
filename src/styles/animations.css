@@ -1,0 +1,144 @@
+/* ==========================================================
+   SYNAPSE – Elegant Motion
+   Fade, scale, slide, blur — never bouncy
+   ========================================================== */
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes fadeBlurIn {
+  from { opacity: 0; filter: blur(8px); }
+  to   { opacity: 1; filter: blur(0); }
+}
+
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideDown {
+  from { opacity: 0; transform: translateY(-12px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideInLeft {
+  from { opacity: 0; transform: translateX(-20px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes slideInRight {
+  from { opacity: 0; transform: translateX(20px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes scaleIn {
+  from { opacity: 0; transform: scale(0.96); }
+  to   { opacity: 1; transform: scale(1); }
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0.55; }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50%       { transform: translateY(-8px); }
+}
+
+@keyframes shimmer {
+  0%   { background-position: -600px 0; }
+  100% { background-position: 600px 0; }
+}
+
+@keyframes tickIn {
+  from { stroke-dashoffset: 50; }
+  to   { stroke-dashoffset: 0; }
+}
+
+@keyframes softGlow {
+  0%, 100% { opacity: 0.5; transform: scale(1); }
+  50%       { opacity: 0.85; transform: scale(1.04); }
+}
+
+@keyframes orbitDrift {
+  0%   { transform: translate(0, 0); }
+  50%  { transform: translate(12px, -10px); }
+  100% { transform: translate(0, 0); }
+}
+
+@keyframes typingWave {
+  0%, 60%, 100% { transform: translateY(0); opacity: 0.4; }
+  30% { transform: translateY(-6px); opacity: 1; }
+}
+
+@keyframes badgeUnlock {
+  0% { transform: scale(0.85); opacity: 0.5; filter: drop-shadow(0 0 0 rgba(79, 70, 229, 0)); }
+  50% { transform: scale(1.08); filter: drop-shadow(0 0 20px rgba(79, 70, 229, 0.6)); }
+  100% { transform: scale(1); opacity: 1; filter: drop-shadow(0 4px 12px rgba(79, 70, 229, 0.25)); }
+}
+
+@keyframes cardHoverLift {
+  from { transform: translateY(0); box-shadow: var(--shadow-sm); }
+  to   { transform: translateY(-3px); box-shadow: var(--shadow-md), var(--shadow-glow); }
+}
+
+@keyframes borderShine {
+  0%   { background-position: 0% 50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Utility classes */
+.animate-fadeIn         { animation: fadeIn 0.45s var(--ease-out) forwards; }
+.animate-fadeBlurIn     { animation: fadeBlurIn 0.5s var(--ease-out) forwards; }
+.animate-slideUp        { animation: slideUp 0.45s var(--ease-out) forwards; }
+.animate-slideDown      { animation: slideDown 0.4s var(--ease-out) forwards; }
+.animate-slideInLeft    { animation: slideInLeft 0.45s var(--ease-out) forwards; }
+.animate-slideInRight   { animation: slideInRight 0.45s var(--ease-out) forwards; }
+.animate-scaleIn        { animation: scaleIn 0.35s var(--ease-out) forwards; }
+.animate-spin           { animation: spin 0.8s linear infinite; }
+.animate-pulse          { animation: pulse 1.6s var(--ease-in-out) infinite; }
+.animate-float          { animation: float 4s var(--ease-in-out) infinite; }
+.animate-badgeUnlock    { animation: badgeUnlock 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) forwards; }
+
+.delay-100 { animation-delay: 0.1s; }
+.delay-200 { animation-delay: 0.2s; }
+.delay-300 { animation-delay: 0.3s; }
+.delay-400 { animation-delay: 0.4s; }
+.delay-500 { animation-delay: 0.5s; }
+
+.skeleton {
+  background: linear-gradient(
+    90deg,
+    rgba(241, 245, 249, 0.9) 25%,
+    rgba(226, 232, 240, 0.95) 50%,
+    rgba(241, 245, 249, 0.9) 75%
+  );
+  background-size: 600px 100%;
+  animation: shimmer 1.4s infinite;
+  border-radius: var(--radius-sm);
+}
+
+@keyframes ambientDrift {
+  0% { transform: scale(1) translate(0, 0); }
+  50% { transform: scale(1.08) translate(-15px, 20px); }
+  100% { transform: scale(1) translate(15px, -15px); }
+}
+
+:root[data-theme="dark"] .skeleton {
+  background: linear-gradient(
+    90deg,
+    rgba(30, 41, 59, 0.8) 25%,
+    rgba(51, 65, 85, 0.9) 50%,
+    rgba(30, 41, 59, 0.8) 75%
+  );
+  background-size: 600px 100%;
+}

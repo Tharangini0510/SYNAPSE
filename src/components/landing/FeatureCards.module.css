@@ -1,0 +1,198 @@
+.section {
+  padding: 5rem 1.5rem;
+  max-width: var(--content-max);
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+
+.header {
+  text-align: center;
+  max-width: 720px;
+  margin: 0 auto 3.5rem auto;
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.35rem 1rem;
+  border-radius: 999px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  background: rgba(79, 70, 229, 0.08);
+  color: var(--color-primary);
+  border: 1px solid rgba(79, 70, 229, 0.18);
+  margin-bottom: 1rem;
+}
+
+:root[data-theme="dark"] .badge {
+  background: rgba(96, 165, 250, 0.12);
+  color: #60A5FA;
+  border-color: rgba(96, 165, 250, 0.25);
+}
+
+.title {
+  font-family: var(--font-heading);
+  font-size: clamp(2rem, 4vw, 2.75rem);
+  font-weight: 800;
+  color: var(--color-text);
+  letter-spacing: -0.03em;
+  line-height: 1.2;
+  margin-bottom: 1rem;
+}
+
+.subtitle {
+  font-size: 1.1rem;
+  color: var(--color-muted);
+  line-height: 1.6;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.75rem;
+}
+
+.card {
+  position: relative;
+  background: var(--color-card-bg);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--color-card-border);
+  border-radius: 20px;
+  padding: 2rem 1.75rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-shadow: var(--shadow-sm);
+  transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+              box-shadow 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+              border-color 0.35s ease;
+  overflow: hidden;
+}
+
+/* Hover effect */
+.card:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-xl), 0 20px 40px rgba(79, 70, 229, 0.12);
+  border-color: rgba(79, 70, 229, 0.3);
+}
+
+:root[data-theme="dark"] .card:hover {
+  border-color: rgba(96, 165, 250, 0.35);
+  box-shadow: var(--shadow-xl), 0 20px 40px rgba(0, 0, 0, 0.6);
+}
+
+/* Subtle corner glow on hover */
+.card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, transparent, var(--color-primary), transparent);
+  opacity: 0;
+  transition: opacity 0.35s ease;
+}
+
+.card:hover::before {
+  opacity: 1;
+}
+
+.cardHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1.5rem;
+}
+
+.iconBox {
+  width: 52px;
+  height: 52px;
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, rgba(79, 70, 229, 0.12) 0%, rgba(59, 130, 246, 0.12) 100%);
+  border: 1px solid rgba(79, 70, 229, 0.15);
+  transition: transform 0.3s ease;
+}
+
+.card:hover .iconBox {
+  transform: scale(1.08) rotate(4deg);
+}
+
+:root[data-theme="dark"] .iconBox {
+  background: linear-gradient(135deg, rgba(99, 102, 241, 0.2) 0%, rgba(56, 189, 248, 0.15) 100%);
+  border-color: rgba(99, 102, 241, 0.3);
+}
+
+.tag {
+  font-size: 0.725rem;
+  font-weight: 600;
+  padding: 3px 9px;
+  border-radius: 999px;
+  background: rgba(15, 23, 42, 0.05);
+  color: var(--color-muted);
+  border: 1px solid var(--color-border);
+}
+
+:root[data-theme="dark"] .tag {
+  background: rgba(255, 255, 255, 0.06);
+  color: #94A3B8;
+}
+
+.cardTitle {
+  font-family: var(--font-heading);
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--color-text);
+  margin-bottom: 0.65rem;
+  letter-spacing: -0.02em;
+}
+
+.cardDesc {
+  font-size: 0.95rem;
+  color: var(--color-muted);
+  line-height: 1.6;
+  margin-bottom: 1.5rem;
+}
+
+.cardFooter {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--color-primary);
+  opacity: 0.85;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.card:hover .cardFooter {
+  opacity: 1;
+  transform: translateX(4px);
+}
+
+:root[data-theme="dark"] .cardFooter {
+  color: #60A5FA;
+}
+
+@media (max-width: 992px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 640px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+  .section {
+    padding: 3.5rem 1rem;
+  }
+}

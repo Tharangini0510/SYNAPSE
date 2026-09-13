@@ -1,0 +1,298 @@
+/* ==========================================================
+   SYNAPSE – Adaptive Theme Overrides
+   data-preference → Adaptive Mode (Settings): Aggressive/Balanced/Gentle/Manual
+   data-mode       → Academic Mode (Topbar): Normal/Exam/Deadline/Focus
+   Theme-aware remapping: Ensures Light Mode uses light ambient gradients,
+   and Dark Mode ALWAYS uses deep dark ambient backgrounds.
+   ========================================================== */
+
+/* ── Adaptive Mode (study preference) — Light Mode Base ─ */
+
+:root[data-preference="aggressive"],
+:root[data-theme="light"][data-preference="aggressive"] {
+  --color-primary: #DC2626;
+  --color-primary-hover: #B91C1C;
+  --color-primary-light: #FEE2E2;
+  --color-primary-glow: rgba(220, 38, 38, 0.28);
+  --color-secondary: #F97316;
+  --color-secondary-hover: #EA580C;
+  --color-border-focus: #DC2626;
+  --shadow-glow: 0 12px 40px rgba(220, 38, 38, 0.22);
+  --ambient-1: rgba(220, 38, 38, 0.14);
+  --ambient-2: rgba(249, 115, 22, 0.12);
+  --ambient-3: rgba(239, 68, 68, 0.08);
+  --ambient-4: rgba(220, 38, 38, 0.06);
+  --ambient-base: linear-gradient(165deg, #FFF7F7 0%, #FEE2E2 42%, #FFF7ED 72%, #FFF7F7 100%);
+}
+
+:root[data-preference="balanced"],
+:root[data-theme="light"][data-preference="balanced"] {
+  --color-primary: #2563EB;
+  --color-primary-hover: #1D4ED8;
+  --color-primary-light: #DBEAFE;
+  --color-primary-glow: rgba(37, 99, 235, 0.28);
+  --color-secondary: #60A5FA;
+  --color-secondary-hover: #3B82F6;
+  --color-border-focus: #2563EB;
+  --shadow-glow: 0 12px 40px rgba(37, 99, 235, 0.22);
+  --ambient-1: rgba(37, 99, 235, 0.14);
+  --ambient-2: rgba(96, 165, 250, 0.16);
+  --ambient-3: rgba(59, 130, 246, 0.08);
+  --ambient-4: rgba(37, 99, 235, 0.06);
+  --ambient-base: linear-gradient(165deg, #F6F8FC 0%, #DBEAFE 42%, #EFF6FF 72%, #F6F8FC 100%);
+}
+
+:root[data-preference="gentle"],
+:root[data-theme="light"][data-preference="gentle"] {
+  --color-primary: #059669;
+  --color-primary-hover: #047857;
+  --color-primary-light: #D1FAE5;
+  --color-primary-glow: rgba(5, 150, 105, 0.28);
+  --color-secondary: #34D399;
+  --color-secondary-hover: #10B981;
+  --color-border-focus: #059669;
+  --shadow-glow: 0 12px 40px rgba(5, 150, 105, 0.22);
+  --ambient-1: rgba(5, 150, 105, 0.14);
+  --ambient-2: rgba(52, 211, 153, 0.14);
+  --ambient-3: rgba(16, 185, 129, 0.08);
+  --ambient-4: rgba(5, 150, 105, 0.06);
+  --ambient-base: linear-gradient(165deg, #F6FDF9 0%, #D1FAE5 42%, #ECFDF5 72%, #F6FDF9 100%);
+}
+
+:root[data-preference="manual"],
+:root[data-theme="light"][data-preference="manual"] {
+  --color-primary: #DB2777;
+  --color-primary-hover: #BE185D;
+  --color-primary-light: #FCE7F3;
+  --color-primary-glow: rgba(219, 39, 119, 0.28);
+  --color-secondary: #F472B6;
+  --color-secondary-hover: #EC4899;
+  --color-border-focus: #DB2777;
+  --shadow-glow: 0 12px 40px rgba(219, 39, 119, 0.22);
+  --ambient-1: rgba(219, 39, 119, 0.14);
+  --ambient-2: rgba(244, 114, 182, 0.14);
+  --ambient-3: rgba(236, 72, 153, 0.08);
+  --ambient-4: rgba(219, 39, 119, 0.06);
+  --ambient-base: linear-gradient(165deg, #FFF7FB 0%, #FCE7F3 42%, #FDF2F8 72%, #FFF7FB 100%);
+}
+
+/* ── Academic Mode — Emphasis Accents (Light Mode Base) ─ */
+
+:root:not([data-theme="dark"])[data-mode="normal"],
+:root:not([data-theme="dark"]) {
+  --color-primary: #4F46E5;
+  --color-primary-hover: #4338CA;
+  --color-primary-light: #EEF2FF;
+  --color-primary-glow: rgba(79, 70, 229, 0.28);
+  --color-secondary: #60A5FA;
+  --color-secondary-hover: #3B82F6;
+  --color-border-focus: #4F46E5;
+  --shadow-glow: 0 12px 40px rgba(79, 70, 229, 0.22);
+  --ambient-1: rgba(79, 70, 229, 0.14);
+  --ambient-2: rgba(96, 165, 250, 0.16);
+  --ambient-3: rgba(16, 185, 129, 0.08);
+  --ambient-4: rgba(79, 70, 229, 0.06);
+  --ambient-base: linear-gradient(165deg, #F6F8FC 0%, #EEF2FF 42%, #F0F9FF 72%, #F6F8FC 100%);
+
+  --mode-accent: #4F46E5;
+  --mode-accent-light: #EEF2FF;
+  --mode-accent-text: #4F46E5;
+  --mode-banner-bg: #EEF2FF;
+  --mode-banner-border: #C7D2FE;
+  --mode-banner-text: #3730A3;
+  --mode-badge-bg: #EEF2FF;
+  --mode-badge-text: #4F46E5;
+  --mode-label: "Normal Semester";
+}
+
+:root:not([data-theme="dark"])[data-mode="exam"] {
+  --color-primary: #7C3AED;
+  --color-primary-hover: #6D28D9;
+  --color-primary-light: #EDE9FE;
+  --color-primary-glow: rgba(124, 58, 237, 0.28);
+  --color-secondary: #A78BFA;
+  --color-secondary-hover: #8B5CF6;
+  --color-border-focus: #7C3AED;
+  --shadow-glow: 0 12px 40px rgba(124, 58, 237, 0.22);
+  --ambient-1: rgba(124, 58, 237, 0.14);
+  --ambient-2: rgba(254, 243, 199, 0.35);
+  --ambient-3: rgba(167, 139, 250, 0.1);
+  --ambient-4: rgba(124, 58, 237, 0.06);
+  --ambient-base: linear-gradient(165deg, #FAF5FF 0%, #EDE9FE 40%, #FEF3C7 75%, #FAF5FF 100%);
+
+  --mode-accent: #7C3AED;
+  --mode-accent-light: #EDE9FE;
+  --mode-accent-text: #7C3AED;
+  --mode-banner-bg: linear-gradient(135deg, #FEF3C7 0%, #EDE9FE 100%);
+  --mode-banner-border: #DDD6FE;
+  --mode-banner-text: #5B21B6;
+  --mode-badge-bg: #EDE9FE;
+  --mode-badge-text: #6D28D9;
+  --mode-label: "Exam Week";
+}
+
+:root:not([data-theme="dark"])[data-mode="deadline"] {
+  --color-primary: #EF4444;
+  --color-primary-hover: #DC2626;
+  --color-primary-light: #FEE2E2;
+  --color-primary-glow: rgba(239, 68, 68, 0.28);
+  --color-secondary: #F87171;
+  --color-secondary-hover: #EF4444;
+  --color-border-focus: #EF4444;
+  --shadow-glow: 0 12px 40px rgba(239, 68, 68, 0.22);
+  --ambient-1: rgba(239, 68, 68, 0.16);
+  --ambient-2: rgba(248, 113, 113, 0.12);
+  --ambient-3: rgba(245, 158, 11, 0.1);
+  --ambient-4: rgba(239, 68, 68, 0.06);
+  --ambient-base: linear-gradient(165deg, #FFF7ED 0%, #FEE2E2 40%, #FEF2F2 72%, #FFF7ED 100%);
+
+  --mode-accent: #EF4444;
+  --mode-accent-light: #FEE2E2;
+  --mode-accent-text: #DC2626;
+  --mode-banner-bg: #FEF2F2;
+  --mode-banner-border: #FECACA;
+  --mode-banner-text: #991B1B;
+  --mode-badge-bg: #FEE2E2;
+  --mode-badge-text: #DC2626;
+  --mode-label: "Deadline Tomorrow";
+}
+
+:root:not([data-theme="dark"])[data-mode="focus"] {
+  --color-primary: #0F172A;
+  --color-primary-hover: #1E293B;
+  --color-primary-light: #E2E8F0;
+  --color-primary-glow: rgba(15, 23, 42, 0.25);
+  --color-secondary: #475569;
+  --color-secondary-hover: #334155;
+  --color-border-focus: #0F172A;
+  --shadow-glow: 0 12px 40px rgba(15, 23, 42, 0.18);
+  --ambient-1: rgba(15, 23, 42, 0.08);
+  --ambient-2: rgba(71, 85, 105, 0.08);
+  --ambient-3: rgba(148, 163, 184, 0.06);
+  --ambient-4: rgba(15, 23, 42, 0.04);
+  --ambient-base: linear-gradient(165deg, #F8FAFC 0%, #F1F5F9 50%, #F8FAFC 100%);
+
+  --mode-accent: #0F172A;
+  --mode-accent-light: #E2E8F0;
+  --mode-accent-text: #0F172A;
+  --mode-banner-bg: #0F172A;
+  --mode-banner-border: #1E293B;
+  --mode-banner-text: #F8FAFC;
+  --mode-badge-bg: #1E293B;
+  --mode-badge-text: #E2E8F0;
+  --mode-label: "Focus Mode";
+
+  --color-bg: #F1F5F9;
+  --color-surface: rgba(255, 255, 255, 0.85);
+  --color-border: rgba(15, 23, 42, 0.12);
+}
+
+.sidebar-accent {
+  background-color: var(--mode-accent);
+}
+
+.adaptive-banner {
+  background: var(--mode-banner-bg);
+  border-color: var(--mode-banner-border);
+  color: var(--mode-banner-text);
+}
+
+.adaptive-badge {
+  background-color: var(--mode-badge-bg);
+  color: var(--mode-badge-text);
+}
+
+:root[data-mode="focus"] .sidebar-nav-label,
+:root[data-mode="focus"] .topbar-search {
+  opacity: 0.6;
+}
+
+:root[data-mode="focus"] * {
+  animation-duration: 0.01ms !important;
+  transition-duration: 0.15s !important;
+}
+
+/* ==========================================================
+   🚨 DARK MODE SPECIFIC OVERRIDES FOR ALL PREFERENCES & MODES
+   Ensures Dark Mode NEVER renders light gradients or pale text
+   ========================================================== */
+
+:root[data-theme="dark"] {
+  --ambient-base: linear-gradient(165deg, #0B1120 0%, #0F172A 45%, #0B1120 100%);
+}
+
+:root[data-theme="dark"][data-preference="aggressive"] {
+  --ambient-1: rgba(220, 38, 38, 0.12);
+  --ambient-2: rgba(249, 115, 22, 0.08);
+  --ambient-3: rgba(239, 68, 68, 0.04);
+  --ambient-4: rgba(220, 38, 38, 0.03);
+  --ambient-base: linear-gradient(165deg, #0B1120 0%, #170910 45%, #0B1120 100%);
+}
+
+:root[data-theme="dark"][data-preference="balanced"] {
+  --ambient-1: rgba(37, 99, 235, 0.12);
+  --ambient-2: rgba(96, 165, 250, 0.08);
+  --ambient-3: rgba(59, 130, 246, 0.04);
+  --ambient-4: rgba(37, 99, 235, 0.03);
+  --ambient-base: linear-gradient(165deg, #0B1120 0%, #0F172A 45%, #0B1120 100%);
+}
+
+:root[data-theme="dark"][data-preference="gentle"] {
+  --ambient-1: rgba(5, 150, 105, 0.12);
+  --ambient-2: rgba(52, 211, 153, 0.08);
+  --ambient-3: rgba(16, 185, 129, 0.04);
+  --ambient-4: rgba(5, 150, 105, 0.03);
+  --ambient-base: linear-gradient(165deg, #0B1120 0%, #061A14 45%, #0B1120 100%);
+}
+
+:root[data-theme="dark"][data-preference="manual"] {
+  --ambient-1: rgba(219, 39, 119, 0.12);
+  --ambient-2: rgba(244, 114, 182, 0.08);
+  --ambient-3: rgba(236, 72, 153, 0.04);
+  --ambient-4: rgba(219, 39, 119, 0.03);
+  --ambient-base: linear-gradient(165deg, #0B1120 0%, #1A0A16 45%, #0B1120 100%);
+}
+
+:root[data-theme="dark"][data-mode="exam"] {
+  --color-primary-light: rgba(124, 58, 237, 0.22);
+  --ambient-1: rgba(124, 58, 237, 0.14);
+  --ambient-2: rgba(167, 139, 250, 0.08);
+  --ambient-3: rgba(124, 58, 237, 0.04);
+  --ambient-4: rgba(167, 139, 250, 0.03);
+  --ambient-base: linear-gradient(165deg, #0B1120 0%, #150F2A 45%, #0B1120 100%);
+  --mode-banner-bg: linear-gradient(135deg, rgba(124, 58, 237, 0.25) 0%, rgba(15, 23, 42, 0.95) 100%);
+  --mode-banner-border: rgba(167, 139, 250, 0.35);
+  --mode-banner-text: #F3E8FF;
+  --mode-badge-bg: rgba(124, 58, 237, 0.3);
+  --mode-badge-text: #DDD6FE;
+}
+
+:root[data-theme="dark"][data-mode="deadline"] {
+  --color-primary-light: rgba(234, 88, 12, 0.22);
+  --ambient-1: rgba(234, 88, 12, 0.14);
+  --ambient-2: rgba(239, 68, 68, 0.08);
+  --ambient-3: rgba(245, 158, 11, 0.04);
+  --ambient-4: rgba(234, 88, 12, 0.03);
+  --ambient-base: linear-gradient(165deg, #0B1120 0%, #1F1008 45%, #0B1120 100%);
+  --mode-banner-bg: linear-gradient(135deg, rgba(234, 88, 12, 0.25) 0%, rgba(15, 23, 42, 0.95) 100%);
+  --mode-banner-border: rgba(251, 146, 60, 0.35);
+  --mode-banner-text: #FFEDD5;
+  --mode-badge-bg: rgba(234, 88, 12, 0.3);
+  --mode-badge-text: #FED7AA;
+}
+
+:root[data-theme="dark"][data-mode="focus"] {
+  --color-bg: #0B1120;
+  --color-surface: rgba(15, 23, 42, 0.85);
+  --color-border: rgba(255, 255, 255, 0.12);
+  --color-primary: #94A3B8;
+  --color-primary-hover: #CBD5E1;
+  --color-primary-light: rgba(148, 163, 184, 0.15);
+  --color-secondary: #64748B;
+  --ambient-base: linear-gradient(165deg, #0B1120 0%, #0F172A 50%, #0B1120 100%);
+  --mode-banner-bg: rgba(15, 23, 42, 0.92);
+  --mode-banner-border: rgba(148, 163, 184, 0.25);
+  --mode-banner-text: #FFFFFF;
+  --mode-badge-bg: rgba(51, 65, 85, 0.8);
+  --mode-badge-text: #CBD5E1;
+}

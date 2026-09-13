@@ -1,0 +1,36 @@
+/* PageWrapper.module.css */
+
+.shell {
+  display: flex;
+  min-height: 100vh;
+  background: transparent;
+}
+
+.main {
+  flex: 1;
+  margin-left: var(--sidebar-width);
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  transition: margin-left var(--transition-base);
+}
+
+.content {
+  flex: 1;
+  padding: calc(var(--topbar-height) + var(--space-8)) var(--space-8) var(--space-10);
+  max-width: var(--content-max);
+  width: 100%;
+  animation: fadeBlurIn 0.45s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes fadeBlurIn {
+  from { opacity: 0; filter: blur(6px); transform: translateY(12px); }
+  to   { opacity: 1; filter: blur(0); transform: translateY(0); }
+}
+
+@media (max-width: 768px) {
+  .main { margin-left: 0; }
+  .content {
+    padding: calc(var(--topbar-height) + var(--space-5)) var(--space-4) var(--space-6);
+  }
+}

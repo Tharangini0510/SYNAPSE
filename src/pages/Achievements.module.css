@@ -1,0 +1,242 @@
+/* Achievements.module.css - Glassmorphic Gamified Badge Suite */
+
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+  width: 100%;
+}
+
+.headerRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--space-4);
+  flex-wrap: wrap;
+}
+
+.headerText {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+}
+
+.pageTitle {
+  font-size: var(--text-2xl);
+  font-weight: 800;
+  color: var(--color-text);
+  margin: 0;
+  font-family: var(--font-heading);
+  letter-spacing: -0.02em;
+}
+
+.pageSubtitle {
+  font-size: var(--text-sm);
+  color: var(--color-muted);
+  margin: 0;
+}
+
+/* Banner Card */
+.summaryBanner {
+  background: linear-gradient(135deg, rgba(79, 70, 229, 0.12), rgba(245, 158, 11, 0.12));
+  border: 1px solid rgba(79, 70, 229, 0.25);
+  border-radius: var(--radius-xl);
+  padding: var(--space-6);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-4);
+  box-shadow: var(--shadow-sm);
+  flex-wrap: wrap;
+}
+
+.summaryText {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.summaryTitle {
+  font-size: var(--text-xl);
+  font-weight: 800;
+  color: var(--color-text);
+  margin: 0;
+  font-family: var(--font-heading);
+}
+
+.summaryDesc {
+  font-size: var(--text-sm);
+  color: var(--color-muted);
+  margin: 0;
+}
+
+.summaryBadge {
+  font-size: var(--text-2xl);
+  font-weight: 800;
+  color: var(--color-primary);
+  background: #ffffff;
+  padding: var(--space-3) var(--space-5);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+}
+
+/* Badges Grid */
+.badgesGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: var(--space-5);
+}
+
+.badgeCard {
+  background: rgba(255, 255, 255, 0.65);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  border-radius: var(--radius-xl);
+  padding: var(--space-5);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: var(--space-4);
+  box-shadow: var(--shadow-sm);
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast), border-color var(--transition-fast);
+  position: relative;
+  overflow: hidden;
+}
+
+.badgeCard.unlocked {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.92) 0%, rgba(245, 158, 11, 0.08) 50%, rgba(79, 70, 229, 0.06) 100%);
+  border: 1.5px solid rgba(245, 158, 11, 0.4);
+  box-shadow: 0 8px 28px rgba(245, 158, 11, 0.18), 0 4px 12px rgba(79, 70, 229, 0.1);
+  animation: badgeUnlock 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.badgeCard.unlocked:hover {
+  transform: translateY(-5px) scale(1.02);
+  box-shadow: 0 16px 40px rgba(245, 158, 11, 0.28), 0 8px 24px rgba(79, 70, 229, 0.2);
+  border-color: #F59E0B;
+}
+
+.badgeCard.locked {
+  opacity: 0.85;
+  border-style: dashed;
+}
+
+.badgeHeader {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-4);
+}
+
+.badgeIconWrapper {
+  width: 56px;
+  height: 56px;
+  border-radius: var(--radius-lg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 28px;
+  background: rgba(17, 24, 39, 0.05);
+  box-shadow: var(--shadow-xs);
+  flex-shrink: 0;
+  transition: transform var(--transition-fast);
+}
+
+.unlocked .badgeIconWrapper {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.9), rgba(245, 158, 11, 0.15));
+  box-shadow: 0 4px 14px rgba(245, 158, 11, 0.25);
+  transform: scale(1.05);
+}
+
+.badgeInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.badgeTitle {
+  font-size: var(--text-base);
+  font-weight: 800;
+  color: var(--color-text);
+  margin: 0;
+  font-family: var(--font-heading);
+}
+
+.badgeDesc {
+  font-size: var(--text-xs);
+  color: var(--color-muted);
+  margin: 0;
+  line-height: 1.45;
+}
+
+.badgeMeta {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  border-top: 1px dashed var(--color-border);
+  padding-top: var(--space-3);
+}
+
+.badgeMetaRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: var(--text-xs);
+  font-weight: 600;
+}
+
+.unlockedPill {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 11px;
+  font-weight: 700;
+  color: #10B981;
+  background: rgba(16, 185, 129, 0.15);
+  padding: 3px 9px;
+  border-radius: var(--radius-full);
+}
+
+.lockedPill {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--color-muted);
+  background: rgba(17, 24, 39, 0.08);
+  padding: 3px 9px;
+  border-radius: var(--radius-full);
+}
+
+.progressBarBg {
+  width: 100%;
+  height: 6px;
+  background: rgba(17, 24, 39, 0.08);
+  border-radius: var(--radius-full);
+  overflow: hidden;
+}
+
+.progressBarFill {
+  height: 100%;
+  background: var(--color-primary);
+  border-radius: var(--radius-full);
+  transition: width 0.6s ease;
+}
+
+/* Dark Mode Overrides */
+:global(:root[data-theme="dark"]) .badgeCard {
+  background: rgba(15, 23, 42, 0.75);
+  border-color: rgba(255, 255, 255, 0.1);
+  color: var(--color-text);
+}
+
+:global(:root[data-theme="dark"]) .badgeCard.unlocked {
+  background: linear-gradient(135deg, rgba(30, 41, 59, 0.9), rgba(79, 70, 229, 0.15));
+  border-color: rgba(96, 165, 250, 0.35);
+}
+
+:global(:root[data-theme="dark"]) .summaryBadge {
+  background: rgba(30, 41, 59, 0.9);
+  color: #93C5FD;
+}

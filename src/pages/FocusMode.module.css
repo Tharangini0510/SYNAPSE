@@ -1,0 +1,276 @@
+/* FocusMode.module.css */
+
+.layout {
+  display: grid;
+  grid-template-columns: 1fr 300px;
+  gap: var(--space-6);
+  align-items: start;
+}
+
+/* ── Timer Section ── */
+.timerSection { width: 100%; }
+
+.timerCard {
+  padding: var(--space-8) var(--space-6);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-6);
+  text-align: center;
+}
+
+/* ── Session Tabs ── */
+.sessionTabs {
+  display: flex;
+  gap: var(--space-2);
+  background: rgba(255, 255, 255, 0.55);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.45);
+  border-radius: var(--radius-md);
+  padding: var(--space-1);
+  box-shadow: var(--shadow-xs);
+}
+
+.sessionTab {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-2) var(--space-4);
+  font-size: var(--text-sm);
+  font-weight: 500;
+  border: none;
+  background: transparent;
+  color: var(--color-muted);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition:
+    background var(--transition-fast),
+    color var(--transition-fast),
+    box-shadow var(--transition-fast);
+  white-space: nowrap;
+}
+.activeTab {
+  background: var(--color-primary);
+  color: #fff;
+  box-shadow: 0 4px 12px rgba(79, 70, 229, 0.3);
+}
+
+/* ── Ring ── */
+.ringWrapper {
+  position: relative;
+  width: 220px;
+  height: 220px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.ring {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.timerDisplay {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-1);
+  position: relative;
+  z-index: 1;
+}
+
+.timerTime {
+  font-size: 3.6rem;
+  font-weight: 800;
+  color: var(--color-text);
+  letter-spacing: -1px;
+  font-variant-numeric: tabular-nums;
+  line-height: 1;
+  font-family: var(--font-heading);
+  text-shadow: 0 4px 20px rgba(79, 70, 229, 0.2);
+}
+
+.playBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 80px;
+  height: 80px;
+  border: none;
+  background: linear-gradient(135deg, var(--color-primary) 0%, #4338CA 100%);
+  color: #fff;
+  border-radius: 50%;
+  cursor: pointer;
+  transition:
+    transform var(--transition-fast),
+    box-shadow var(--transition-base);
+  box-shadow: 0 12px 36px rgba(79, 70, 229, 0.45);
+}
+.playBtn:hover {
+  transform: scale(1.08);
+  box-shadow: 0 20px 56px rgba(79, 70, 229, 0.55);
+}
+.pauseBtn {
+  background: var(--color-warning);
+  box-shadow: 0 12px 40px rgba(245, 158, 11, 0.35);
+}
+
+/* ── Focus Task ── */
+.focusTaskRow {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  width: 100%;
+  max-width: 400px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: var(--space-3) var(--space-4);
+  background: rgba(255, 255, 255, 0.55);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  transition:
+    border-color var(--transition-fast),
+    box-shadow var(--transition-fast);
+}
+.focusTaskRow:focus-within {
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.1);
+}
+
+.focusIcon {
+  color: var(--color-primary);
+  flex-shrink: 0;
+}
+
+.focusInput {
+  flex: 1;
+  border: none;
+  outline: none;
+  font-size: var(--text-sm);
+  color: var(--color-text);
+  background: transparent;
+}
+.focusInput::placeholder { color: var(--color-muted); }
+
+/* ── Sidebar ── */
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.sideTitle {
+  font-size: var(--text-sm);
+  font-weight: 700;
+  color: var(--color-text);
+  margin: 0 0 var(--space-4) 0;
+  font-family: var(--font-heading);
+}
+
+/* ── Stats Card ── */
+.statsCard { padding: var(--space-5); }
+
+.statsList {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.statItem {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+}
+
+.statIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: var(--radius-md);
+  flex-shrink: 0;
+  background: rgba(255, 255, 255, 0.5);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  box-shadow: var(--shadow-xs);
+}
+
+.statValue {
+  font-size: var(--text-lg);
+  font-weight: 700;
+  color: var(--color-text);
+  line-height: 1;
+  font-family: var(--font-heading);
+}
+
+.statLabel {
+  font-size: var(--text-xs);
+  color: var(--color-muted);
+  margin-top: 2px;
+}
+
+/* ── Quote ── */
+.quoteCard {
+  padding: var(--space-5);
+  background:
+    linear-gradient(rgba(255, 255, 255, 0.55), rgba(255, 255, 255, 0.55)) padding-box,
+    linear-gradient(135deg, rgba(79, 70, 229, 0.2), rgba(96, 165, 250, 0.15)) border-box;
+  border: 1px solid transparent;
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  text-align: center;
+  box-shadow: var(--shadow-xs);
+}
+
+.quoteIcon {
+  font-size: var(--text-2xl);
+  color: var(--color-primary);
+  margin-bottom: var(--space-2);
+}
+
+.quoteText {
+  font-size: var(--text-sm);
+  color: var(--color-text);
+  line-height: 1.65;
+  margin: 0;
+  font-style: italic;
+}
+
+/* ── Guide Card ── */
+.guideCard { padding: var(--space-5); }
+
+.guideList {
+  margin: 0;
+  padding-left: var(--space-5);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.guideList li {
+  font-size: var(--text-sm);
+  color: var(--color-muted);
+  line-height: 1.5;
+}
+
+/* ── Responsive ── */
+@media (max-width: 900px) {
+  .layout {
+    grid-template-columns: 1fr;
+  }
+  .timerCard { padding: var(--space-6) var(--space-4); }
+}
+
+@media (max-width: 480px) {
+  .sessionTabs {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .timerTime { font-size: 2.6rem; }
+  .ringWrapper { width: 180px; height: 180px; }
+}

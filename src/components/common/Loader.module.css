@@ -1,0 +1,59 @@
+/* Loader.module.css */
+
+.spinner {
+  display: inline-block;
+  border: 2.5px solid rgba(17, 24, 39, 0.1);
+  border-top-color: var(--color-primary);
+  border-radius: 50%;
+  animation: spin 0.7s linear infinite;
+  flex-shrink: 0;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+.pageLoader {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-3);
+  min-height: 100vh;
+}
+
+.pageLoaderText {
+  font-size: var(--text-sm);
+  color: var(--color-muted);
+  font-family: var(--font-body);
+}
+
+.skeleton {
+  background: linear-gradient(
+    90deg,
+    rgba(241, 245, 249, 0.9) 25%,
+    rgba(226, 232, 240, 0.95) 50%,
+    rgba(241, 245, 249, 0.9) 75%
+  );
+  background-size: 600px 100%;
+  animation: shimmer 1.4s infinite;
+  border-radius: var(--radius-sm);
+}
+
+.skeletonCard {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  padding: var(--space-6);
+  background: var(--glass-bg);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-radius: var(--radius-lg);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  box-shadow: var(--shadow-sm);
+}
+
+@keyframes shimmer {
+  0%   { background-position: -600px 0; }
+  100% { background-position: 600px 0; }
+}
