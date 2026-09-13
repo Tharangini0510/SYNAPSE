@@ -371,20 +371,15 @@ export default function StudyVault() {
                         <p className={styles.resourceDesc}>{res.description}</p>
                       )}
 
-                      <div className={styles.tagRow}>
-                        <span
-                          className={styles.subjectChip}
-                          style={{ background: `${color}15`, color: color }}
-                        >
-                          {res.subject}
-                        </span>
-                        <span className={styles.typeChip}>{res.type}</span>
-                        {(res.tags || []).map((tag, idx) => (
-                          <span key={idx} className={styles.customTagChip}>
-                            #{tag}
-                          </span>
-                        ))}
-                      </div>
+                      {res.tags && res.tags.length > 0 && (
+                        <div className={styles.tagRow}>
+                          {res.tags.map((tag, idx) => (
+                            <span key={idx} className={styles.customTagChip}>
+                              #{tag}
+                            </span>
+                          ))}
+                        </div>
+                      )}
                     </div>
                   </div>
 
@@ -502,34 +497,6 @@ export default function StudyVault() {
                     onChange={(e) => setFormData({ ...formData, url: e.target.value })}
                     required
                   />
-                </div>
-
-                <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem' }}>
-                  <div className={styles.formGroup}>
-                    <label className={styles.formLabel}>Subject</label>
-                    <select
-                      className={styles.formSelect}
-                      value={formData.subject}
-                      onChange={(e) => setFormData({ ...formData, subject: e.target.value })}
-                    >
-                      {SUBJECTS.map((s) => (
-                        <option key={s} value={s}>{s}</option>
-                      ))}
-                    </select>
-                  </div>
-
-                  <div className={styles.formGroup}>
-                    <label className={styles.formLabel}>Resource Type</label>
-                    <select
-                      className={styles.formSelect}
-                      value={formData.type}
-                      onChange={(e) => setFormData({ ...formData, type: e.target.value })}
-                    >
-                      {RESOURCE_TYPES.map((t) => (
-                        <option key={t.value} value={t.value}>{t.label}</option>
-                      ))}
-                    </select>
-                  </div>
                 </div>
 
                 <div className={styles.formGroup}>
